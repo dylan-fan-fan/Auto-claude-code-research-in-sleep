@@ -82,7 +82,7 @@ mkdir -p "$NEW_VENUE_DIR/.aris"
 
 **Composition rules** (all `cp`, never `\input{../...}`, never symlink):
 
-1. **`main.tex`** — write fresh for the target venue's `.sty`. Use `templates/<venue>.tex` as the starting skeleton; only the `\title{}`, `\author{}`, abstract include, and section input lines are copied from the base venue's `main.tex`. The new `main.tex` lives entirely inside `$NEW_VENUE_DIR/`.
+1. **`main.tex`** — write fresh for the target venue's `.sty`. Use `templates/<venue>.tex` as the starting skeleton; copy the base `\title{}` only as an initial candidate, not as immutable text; copy the `\author{}`, abstract include, and section input lines. The new `main.tex` lives entirely inside `$NEW_VENUE_DIR/`.
 2. **`sec/` (or `sections/`)** — physical `cp -r $PAPER_BASE_DIR/sec/ $NEW_VENUE_DIR/sec/`. **Do not symlink, do not `\input{../sec/...}` from the new main.** Symlinks break Overleaf zip export; cross-directory `\input` would mutate the shared pool and pollute prior submissions.
 3. **`math_commands.tex`** (and any other macro file the sections depend on) — physical `cp` into `$NEW_VENUE_DIR/`.
 4. **`Figure/` (or `figures/`)** — copy the directory in (`cp -r`). **Path trap**: existing sections likely write `\includegraphics{Figure/foo.pdf}`. If you set `\graphicspath{{../Figure/}}` from a child directory, it resolves `../Figure/Figure/foo.pdf` — wrong. Either copy `Figure/` in directly (preferred), or use `\graphicspath{{../}}`.
@@ -131,7 +131,11 @@ If **any of the 5 layers** triggers a hit, emit `RESUBMIT_REPORT.json` with `ver
 
 Search for `\revise{...}`, `\fix{...}`, `\new{...}`, `\todo{...}`, `\todonotes{...}`, `\textcolor{red}{...}` leftovers from camera-ready cycles. List them; user decides whether to keep (some venues accept revision-marker boxes) or strip.
 
-**Output of Phase 0.5**: `BASELINE.md` with initial page count, anonymity-scan summary, residual-color list, overfull-hbox count.
+**Title audit**:
+
+Read the inherited title without the abstract and apply `../shared-references/writing-principles.md#paper-titles`. Record PASS/FAIL and the title's English word count in `BASELINE.md`. If it fails the program-list test, add a MAJOR, text-fixable item to `KNOWN_WEAKNESSES.md`; Phase 2 must generate at least three shorter accurate alternatives and select the shortest one that preserves necessary scope. The inherited title is never grandfathered in merely because the rest of the manuscript is polished.
+
+**Output of Phase 0.5**: `BASELINE.md` with initial page count, title-audit result, anonymity-scan summary, residual-color list, overfull-hbox count.
 
 ### Phase 1: Audit (zero edits)
 
@@ -355,13 +359,14 @@ When Phase 0.5 or Phase 4 detects page overflow, apply this **ordered** heuristi
 
 ## Convergence Criteria (Phase 2 stop condition)
 
-Phase 2's per-round loop terminates when **all three** hold:
+Phase 2's per-round loop terminates when **all four** hold:
 
 1. **No new CRITICAL or MAJOR text-fixable findings** in the round's reviewer output (compared to the running running-deduped weakness list).
 2. **Page budget passes** — `/paper-compile` reports page count ≤ venue limit.
 3. **All audits non-blocking** — `/proof-checker`, `/paper-claim-audit`, `/citation-audit --soft-only` all return `verdict ∈ {PASS, NOT_APPLICABLE}` (not `WARN/FAIL/BLOCKED/ERROR`).
+4. **Title passes** — read alone, the title passes the shared program-list test; any title longer than about 16 English words or containing multiple subtitle clauses has a recorded accuracy or scope justification.
 
-If after `ROUNDS` (default 2) any of (1)/(2)/(3) is still failing, emit a checkpoint to the user asking whether to continue with an extra round (not auto-extend). The user explicitly approving an extra round overrides the default-2 cap.
+If after `ROUNDS` (default 2) any of (1)/(2)/(3)/(4) is still failing, emit a checkpoint to the user asking whether to continue with an extra round (not auto-extend). The user explicitly approving an extra round overrides the default-2 cap.
 
 This pattern is borrowed from `/rebuttal` Phase 7's "terminate when no new substantive issues" — the same shape works for resubmit.
 
@@ -405,6 +410,7 @@ The skill emits one of 7 verdicts (the 6 from the assurance contract + a `USER_D
 
 - **Never overwrite prior submission directories.** This is the single hardest invariant. The skill aborts at Phase 0 if the target dir already exists.
 - **Bib is frozen.** All citation-audit findings flow through `--soft-only` and emerge as text-rewrite proposals, not bib edits.
+- **The inherited title is only a candidate.** It must pass the shared title-alone program-list test before the resubmission can converge.
 - **Edit whitelist is binding.** Every Phase 2 round respects the whitelist; rejections logged to `PAPER_IMPROVEMENT_LOG.md`; the user sees a per-round summary at the round checkpoint.
 - **Per-round diff gate is mandatory.** Multi-round drift is the highest-risk failure mode for resubmit (a small softening at round 1 + another small softening at round 2 can compound into a meaningful framing change). The orchestrator MUST inspect each round's diff before next round.
 - **Convergence criteria are fixed.** Default is 2 rounds; a 3rd round requires explicit user approval at the round-2 checkpoint. The loop does not auto-extend.

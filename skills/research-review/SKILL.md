@@ -87,6 +87,10 @@ mcp__codex__codex:
     2. Missing experiments that would strengthen the story
     3. Narrative weaknesses
     4. Whether the contribution is sufficient for a top venue
+    5. If a paper title exists, whether it passes the title-alone program-list
+       test in `../shared-references/writing-principles.md#paper-titles`. Treat a
+       bloated, jargon-stacked, or hard-to-follow title as a major narrative
+       weakness and propose 3 shorter accurate alternatives.
 
     === SCOPE LIMITS (these bound what you PROPOSE, never what you look for) ===
     Report anything that is actually wrong here — including a rare-looking case, if
@@ -192,6 +196,7 @@ Update project memory/notes with key review conclusions.
 - Be honest about weaknesses — hiding them leads to worse feedback
 - Push back on criticisms you disagree with, but accept valid ones
 - Focus on ACTIONABLE feedback — "what experiment would fix this?"
+- For paper reviews, assess the title without the abstract; do not declare the narrative settled until the title passes the program-list test
 - Document the threadId for potential future resumption
 - The review document should be self-contained (readable without the conversation)
 

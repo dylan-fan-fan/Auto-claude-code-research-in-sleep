@@ -9,6 +9,7 @@ This is the expanded English counterpart to the detailed Chinese version. It is 
 - [When to Read](#when-to-read)
 - [The Narrative Principle](#the-narrative-principle)
 - [Time Allocation and Reviewer Reading Order](#time-allocation-and-reviewer-reading-order)
+- [Paper Titles](#paper-titles)
 - [How to Write the Abstract](#how-to-write-the-abstract)
 - [Introduction Structure](#introduction-structure)
 - [Sentence-Level Clarity](#sentence-level-clarity)
@@ -92,6 +93,24 @@ Most reviewers encounter the paper in this order:
 - Do not bury the main contribution after Section 3.
 - Make the value of the paper legible before the reader reaches the full method.
 - If the first two pages are unclear, later brilliance may never be seen.
+
+## Paper Titles
+
+A title is the paper's program-level interface, not a compressed abstract. A reader scanning a venue program should understand the paper's subject and main contribution in one pass, before seeing the abstract.
+
+### Title Rules
+
+- State the core subject and contribution in plain, recognizable language.
+- Prefer one clean noun phrase or short declarative claim. Do not stack mechanisms, evaluation details, scope clauses, and secondary contributions into the title.
+- Minimize jargon. Do not introduce a new acronym in the title; retain only established technical terms that are necessary to identify the work accurately.
+- Avoid `X: Y` and multi-clause titles when the subtitle merely adds method detail. Use a subtitle only when it materially improves recognition or supplies a necessary scope qualifier.
+- Draft at least three accurate candidates and choose the shortest one that still distinguishes the paper and preserves its claim boundary.
+- As a default heuristic, aim for roughly 8--14 English words. A title longer than about 16 words, or one with multiple colon/dash clauses, requires an explicit accuracy or scope justification and should normally be shortened.
+- Accuracy beats brevity: never delete a qualifier whose removal would overclaim. Move nonessential qualifiers and method details into the abstract.
+
+### Program-List Test
+
+Read the title by itself, without the abstract. If an adjacent-domain researcher cannot paraphrase what the paper is about after one reading, rewrite it. A title that is bloated, jargon-stacked, or hard to follow fails even if every individual term is technically correct.
 
 ## How to Write the Abstract
 
@@ -468,6 +487,7 @@ Do:
 | Mistake | Fix |
 |--------|-----|
 | Generic abstract opening | Start from the paper's actual contribution |
+| Bloated or jargon-heavy title | Rewrite for one-pass program-list comprehension; move secondary details to the abstract |
 | Inconsistent terminology | Keep one name per concept |
 | Too much passive voice | Prefer active constructions |
 | Hedging everywhere | Keep hedging only where uncertainty is real |
@@ -491,6 +511,13 @@ Do:
 | Inconsistent key or style format | Normalize the bibliography |
 
 ## Pre-Submission Checklist
+
+### Title
+
+- [ ] The title alone makes the subject and main contribution understandable in one pass.
+- [ ] The title contains no stacked jargon or abstract-level method and evaluation detail.
+- [ ] At least three accurate candidates were considered, and the shortest accurate one was chosen.
+- [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification.
 
 ### Narrative
 

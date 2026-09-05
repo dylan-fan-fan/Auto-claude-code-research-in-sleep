@@ -287,16 +287,20 @@ mcp__codex__codex:
     4. **Weaknesses** (bullet list, ranked: CRITICAL > MAJOR > MINOR)
     5. **For each CRITICAL/MAJOR weakness**: A specific, actionable fix
     6. **Missing References** (if any)
-    7. **Visual Review** (from the PDF):
+    7. **Title Review** (read the title without the abstract):
+       - Apply `../shared-references/writing-principles.md#paper-titles`.
+       - Can an adjacent-domain reader paraphrase the subject and contribution after one reading?
+       - Flag a bloated, jargon-stacked, or multi-clause title as MAJOR and propose 3 shorter accurate alternatives.
+    8. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    8. **Verdict**: Ready for submission? Yes / Almost / No
+    9. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
-    self-containedness, notation consistency, AND visual presentation quality.
+    title clarity and length, self-containedness, notation consistency, AND visual presentation quality.
 ```
 
 Save the threadId for Round 2.
@@ -453,16 +457,20 @@ mcp__codex__codex:
     4. **Weaknesses** (bullet list, ranked: CRITICAL > MAJOR > MINOR)
     5. **For each CRITICAL/MAJOR weakness**: A specific, actionable fix
     6. **Missing References** (if any)
-    7. **Visual Review** (from the PDF):
+    7. **Title Review** (read the title without the abstract):
+       - Apply `../shared-references/writing-principles.md#paper-titles`.
+       - Can an adjacent-domain reader paraphrase the subject and contribution after one reading?
+       - Flag a bloated, jargon-stacked, or multi-clause title as MAJOR and propose 3 shorter accurate alternatives.
+    8. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    8. **Verdict**: Ready for submission? Yes / Almost / No
+    9. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
-    self-containedness, notation consistency, and visual presentation quality.
+    title clarity and length, self-containedness, notation consistency, and visual presentation quality.
 ```
 
 If `REVIEWER_BIAS_GUARD = false` (legacy debugging only), use `mcp__codex__codex-reply` with the saved threadId; this is **not** the recommended path.
@@ -527,6 +535,8 @@ cp main.pdf main_round2.pdf
 ### Step 8: Format Check
 
 After the final recompilation, run a **location-aware** format compliance check.
+
+**Title gate (blocking for a submission-ready verdict):** read the title without the abstract and apply `../shared-references/writing-principles.md#paper-titles`. If it fails the program-list test, draft at least three shorter accurate alternatives, select the shortest one that preserves necessary scope, update the title, and recompile. Do not mark the paper ready while the title remains bloated, jargon-stacked, or hard to paraphrase after one reading.
 
 ```bash
 # If the log lacks file/line data, rerun the final compile once with -file-line-error.
@@ -674,6 +684,7 @@ paper/
 - **Always recompile after fixes** — verify 0 errors before proceeding
 - **Do not fabricate experimental results** — synthetic validation must describe methodology, not invent numbers
 - **Respect the paper's claims** — narrow genuine overclaims rather than adding unsupported new claims, and state supported claims directly rather than wrapping them in fresh hedges
+- **Title is a submission gate** — choose the shortest accurate title that passes the program-list test; move nonessential mechanism and evaluation detail into the abstract
 - **Global consistency** — when renaming notation or changing a claim's scope, keep every restatement semantically consistent across ALL files (abstract, intro, method, experiments, theory sections, conclusion, tables, figure captions); consistency means matching scope, not copying disclaimer sentences everywhere
 - **Edit-whitelist rejections are LOGGED, not silently dropped** — when `EDIT_WHITELIST` is set and an edit is rejected for a path or forbidden-operation violation, the rejection MUST be appended to `PAPER_IMPROVEMENT_LOG.md` with file, reason, offending pattern, and the original reviewer concern. The loop reports a rejection summary at the end of every round (and in the checkpoint, if `HUMAN_CHECKPOINT = true`). Never silently swallow a whitelist rejection — the audit trail is the whole point of the parameter.
 

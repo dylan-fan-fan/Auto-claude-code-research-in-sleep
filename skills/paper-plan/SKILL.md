@@ -31,7 +31,7 @@ If none exist, ask the user to describe the paper's contribution in 3-5 sentence
 
 Keep the existing `insleep` workflow and outputs, but use the shared references below to improve the quality of the story and outline.
 
-- Read `../shared-references/writing-principles.md` when framing the one-sentence contribution, Abstract, Introduction, Related Work, or hero figure.
+- Read `../shared-references/writing-principles.md` when framing the title, one-sentence contribution, Abstract, Introduction, Related Work, or hero figure; the title guidance is mandatory whenever a title is proposed or revised.
 - Read `../shared-references/venue-checklists.md` before freezing the outline for a specific venue.
 - Only load these references when needed; do not paste their full contents into the working draft.
 
@@ -164,6 +164,7 @@ Before committing to a structure, apply the narrative principle from `../shared-
 - The paper should tell one coherent technical story.
 - By the end of the Introduction, the outline should make the **What**, **Why**, and **So What** explicit.
 - Front-load the most important material: title, abstract, introduction, and hero figure. Reviewers often form a judgment before reading the full method.
+- Draft at least three accurate title candidates and choose the shortest one that passes the shared title-alone program-list test.
 
 **IMPORTANT**: The section count is FLEXIBLE (5-8 sections). Choose what fits the content best. The templates below are starting points, not rigid constraints.
 
@@ -319,6 +320,9 @@ mcp__codex__codex:
     4. Positioning relative to prior work
     5. Page budget feasibility (MAX_PAGES = main body to Conclusion end, excluding refs/appendix)
     6. Front-matter strength — are the abstract, introduction, and hero figure plan strong enough for skim-reading reviewers?
+    7. Title quality — read it alone: is it short, plain enough to parse in one pass, and free of stacked jargon or abstract-level detail?
+
+    If the title fails, propose 3 shorter accurate alternatives and identify the shortest one that preserves necessary scope.
 
     For each weakness, suggest the MINIMUM fix.
     Be specific and actionable — "add X" not "consider more experiments".
@@ -333,7 +337,8 @@ Save the final outline to `PAPER_PLAN.md` in the project root:
 ```markdown
 # Paper Plan
 
-**Title**: [working title]
+**Title**: [shortest accurate working title that passes the program-list test]
+**Title alternatives considered**: [at least two other accurate candidates]
 **One-sentence contribution**: [single-sentence statement of the paper's core takeaway]
 **Venue**: [target venue]
 **Type**: [empirical/theory/method]
@@ -370,6 +375,7 @@ Save the final outline to `PAPER_PLAN.md` in the project root:
 - **MAX_PAGES counting differs by venue** — ML conferences: main body to Conclusion end, references/appendix NOT counted; AAAI main track is typically 7 technical-content pages plus references. **IEEE venues: references ARE counted toward the page limit.**
 - **Venue-specific norms** — ML conferences (ICLR/NeurIPS/ICML) use `natbib` (`\citep`/`\citet`); **IEEE venues use `cite` package (`\cite{}`, numeric style)**
 - **Claims-Evidence Matrix is the backbone** — every claim must map to evidence, every experiment must support a claim
+- **Title must pass alone** — compare at least three candidates and choose the shortest accurate title that an adjacent-domain reader can paraphrase after one reading
 - **Front-load the story** — the outline should make the contribution clear in the title, abstract, introduction, and hero figure before the reader reaches the full method
 - **Figures need detailed descriptions** — especially the hero figure, which must clearly specify comparisons and visual expectations
 - **Section count is flexible** — 5-8 sections depending on paper type. Don't force content into a rigid 5-section template.

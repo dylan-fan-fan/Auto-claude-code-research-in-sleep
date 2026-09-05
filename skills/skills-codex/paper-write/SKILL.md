@@ -29,7 +29,7 @@ If no PAPER_PLAN.md exists, ask the user to run `/paper-plan` first or provide a
 
 Keep the existing workflow, file layout, and defaults. Use the shared references below only when they improve writing quality:
 
-- Read `../shared-references/writing-principles.md` before drafting the Abstract, Introduction, Related Work, or when prose feels generic
+- Read `../shared-references/writing-principles.md` before drafting or revising the title, Abstract, Introduction, Related Work, or when prose feels generic; the title guidance is mandatory
 - Read `../shared-references/venue-checklists.md` during the final write-up and submission-readiness pass
 - Read `../shared-references/citation-discipline.md` only when the built-in DBLP/CrossRef workflow is insufficient
 
@@ -144,7 +144,7 @@ Process sections in order. For each section:
 4. **Insert figures/tables** — use snippets from `figures/latex_includes.tex`
 5. **Add citations** — for ML conferences (ICLR/NeurIPS/ICML/CVPR/ACL/AAAI): use `\citep{}` / `\citet{}` (natbib). **For IEEE venues**: use `\cite{}` (numeric style via `cite` package). Never mix natbib and cite commands.
 
-Before drafting the front matter, re-read the one-sentence contribution from `PAPER_PLAN.md`. The Abstract and Introduction should make that takeaway obvious before the reader reaches the full method.
+Before drafting the front matter, re-read the one-sentence contribution from `PAPER_PLAN.md`. Draft at least three accurate title candidates and choose the shortest one that passes the title-alone program-list test in `../shared-references/writing-principles.md#paper-titles`. The Abstract and Introduction should make that takeaway obvious before the reader reaches the full method.
 
 #### Section-Specific Guidelines
 
@@ -339,6 +339,7 @@ spawn_agent:
     5. Is related work sufficiently comprehensive (≥1 page)?
     6. For theory papers: are proof sketches adequate?
     7. Are figures/tables clearly described and properly referenced?
+    8. Read the title without the abstract: can an adjacent-domain reader paraphrase the subject and contribution after one reading? If not, treat it as MAJOR and propose 3 shorter accurate alternatives.
 
     For each issue, specify: severity (CRITICAL/MAJOR/MINOR), location, and fix.
 
@@ -369,7 +370,8 @@ Before declaring done:
 - [ ] No TODO/FIXME/XXX markers left in the text
 - [ ] No `[VERIFY]` markers left unchecked
 - [ ] Abstract is self-contained (understandable without reading the paper)
-- [ ] Title is specific and informative (not generic)
+- [ ] Title passes the title-alone program-list test and is the shortest accurate choice among at least three candidates
+- [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification
 - [ ] Related work is ≥1 full page
 - [ ] references.bib contains ONLY cited entries (no bloat)
 - [ ] **No stale section files** — every .tex in `sections/` is `\input`ed by `main.tex`
@@ -460,12 +462,13 @@ Before declaring done:
 - **Section count is flexible** — match PAPER_PLAN structure, don't force into 5 sections
 - **Backup before overwrite** — never destroy existing `paper/` directory without backing up
 - **Front-load the contribution** — do not hide the payoff until the experiments or appendix
+- **Keep the title short and legible** — move nonessential mechanism and evaluation detail into the abstract; never trade away a necessary anti-overclaim qualifier
 - **Order results by argument, not by lab notebook** — present experiments in the sequence that best builds the case, never in the order they happened to run
 - **Controls and ablations sit next to the claim they test** — not pooled in a distant subsection where the reader has forgotten what was at stake
 
 ## Writing Quality Reference
 
-- `../shared-references/writing-principles.md` — story framing, abstract/introduction patterns, sentence-level clarity, reviewer reading order
+- `../shared-references/writing-principles.md` — title rules, story framing, abstract/introduction patterns, sentence-level clarity, reviewer reading order
 - `../shared-references/venue-checklists.md` — ICLR/NeurIPS/ICML/IEEE submission requirements to check before declaring done
 - `../shared-references/citation-discipline.md` — stricter fallback for ambiguous citations
 
