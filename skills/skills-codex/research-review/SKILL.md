@@ -72,6 +72,15 @@ spawn_agent:
          and conclusion;
        - distinguish code present, called, executed, and backed by preserved
          results.
+       - require a compact worked trace for a central multi-stage mechanism and
+         distinguish illustration, possibility evidence, historical evidence,
+         and generality evidence;
+       - check claim-bearing detectors for positive and benign/randomized
+         negative controls, calibration, and false-positive/base rates;
+       - audit effective rather than merely requested configuration, including
+         inert or adapter-dependent parameters;
+       - require an upfront mapping for intentional source-label conflicts and
+         functional positioning of new checklists/traces against prior art.
 
     === SCOPE LIMITS (these bound what you PROPOSE, never what you look for) ===
     Report anything that is actually wrong here — including a rare-looking case, if
@@ -166,6 +175,7 @@ Save a trace for every `spawn_agent`, `send_input`, or `oracle-pro` review call 
 - For paper reviews, assess the first two Introduction paragraphs in isolation; do not declare the narrative settled until the question, importance, and primary finding are immediately recoverable in plain language
 - For paper reviews, do not declare the writing accessible until technical abbreviations are defined before use in the Abstract and again in the main text, with self-contained captions
 - For audit and case-study papers, do not declare the narrative settled while the target is ambiguous, artifacts are not reviewer-visible, one case carries an unvalidated framework claim, claim strength drifts, or implementation presence is confused with execution evidence
+- For process-heavy papers, require one readable worked trace; do not treat a toy demonstration as historical or general evidence, a detector name as construct validation, requested parameters as effective behavior, or unexplained label conflicts as harmless
 - Document the agent id for potential future resumption
 - The review document should be self-contained (readable without the conversation)
 

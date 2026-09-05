@@ -124,9 +124,24 @@ spawn_agent:
     - simulation_only: simulated environment
     - human_eval: human judges
 
+    ### G. Effective Configuration Semantics
+    1. Which parameters actually affect the selected backend and mode?
+    2. Are any arguments inert, contradictory, silently defaulted, or adapter-dependent?
+    3. Do logs or a minimal behavioral test confirm the effective configuration?
+    WARN if effective behavior is unverified because an adapter or trace is missing.
+    FAIL if the paper claims a configuration that the executed backend ignored or contradicted.
+
+    ### H. Detector Construct Validation
+    For every detector used to support a latent-property claim:
+    1. Are there positive controls and representative benign/randomized negative controls?
+    2. Are false-positive or base rates and threshold selection reported?
+    3. Is manual adjudication used where surface form alone cannot identify the construct?
+    FAIL if detector hits are interpreted as a latent property without suitable controls.
+    Otherwise restrict the admissible claim to the direct observable.
+
     ## Output Format
 
-    For each check (A-F), report:
+    For each check (A-H), report:
     - Status: PASS | WARN | FAIL
     - Evidence: exact file:line references
     - Details: what specifically was found
@@ -170,6 +185,12 @@ Parse the reviewer's response and write `EXPERIMENT_AUDIT.md`:
 
 ### F. Evaluation Type: [real_gt | synthetic_proxy | ...]
 [classification + evidence]
+
+### G. Effective Configuration Semantics: [PASS|WARN|FAIL]
+[active / inert / contradictory / adapter-dependent parameters + evidence]
+
+### H. Detector Construct Validation: [PASS|WARN|FAIL]
+[controls, calibration, false-positive/base rates, adjudication, and admissible claim]
 
 ## Action Items
 - [specific fixes if WARN or FAIL]
@@ -281,6 +302,8 @@ if EXPERIMENT_AUDIT.json exists AND integrity_status == "fail":
 - **Review class**: base Codex is same-family provisional; only an overlay may claim cross-family accepted.
 - **Honest about limits**: the audit catches common patterns, not all possible fraud. It is a safety net, not a guarantee.
 - **Implementation is not execution**: preserve the four-state ledger; claim-relevant execution gaps are FAIL, while unrelated dead code is WARN.
+- **Call-site configuration is not effective behavior**: audit inert, contradictory, defaulted, and adapter-dependent parameters.
+- **Detector output is not construct validity**: require suitable controls and calibration or limit the claim to the direct observable.
 
 ## Acknowledgements
 

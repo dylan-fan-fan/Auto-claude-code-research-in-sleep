@@ -159,6 +159,17 @@ mcp__codex__codex:
        Rule: require separate evidence for present, called, executed, and
        result-backed status
 
+    10. **Toy-evidence promotion**: a diagram, invented row, or executable toy
+        case is used to support a missing historical execution or broad
+        generality claim
+        Rule: classify it as illustration_only or mechanism_possible unless
+        independent historical or cross-case evidence exists
+
+    11. **Detector-to-construct leap**: a surface detector hit is reported as
+        evidence of a latent property without appropriate positive and
+        benign/randomized negative controls, calibration, and adjudication
+        Rule: without those controls, cap the claim at the direct observable
+
     ## Output Format (per claim)
     For each claim, report:
     - claim_id: sequential number

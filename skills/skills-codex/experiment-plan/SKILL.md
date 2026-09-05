@@ -88,6 +88,8 @@ For every kept block, fully specify:
 - **Compared systems**: strongest baselines, ablations, and variants only
 - **Metrics**: decisive metrics first, secondary metrics second
 - **Setup details**: backbone, frozen vs trainable parts, key hyperparameters, training budget, seeds
+- **Effective configuration**: which parameters are active, ignored, contradictory, or adapter-dependent, and how this will be verified
+- **Construct controls**: positive controls, benign/randomized negative controls, false-positive or base-rate measurement, threshold justification, and adjudication plan for each claim-bearing detector
 - **Success criterion**: what outcome would count as convincing evidence?
 - **Failure interpretation**: if the result is negative, what does it mean?
 - **Table / figure target**: where this result should appear in the paper
@@ -97,6 +99,8 @@ Special rules:
 - A **simplicity check** should usually compare the final method against either an overbuilt variant or a tempting extra component that the paper intentionally rejects.
 - A **frontier necessity check** should usually compare the chosen modern primitive against the strongest plausible simpler or older alternative.
 - If the proposal is intentionally non-frontier, say so explicitly and skip the frontier block instead of forcing one.
+- If a pipeline or failure mechanism is central, include a small executable end-to-end demonstration or controlled fault injection. Label a purely invented walkthrough as illustration, not empirical validation.
+- If a detector cannot be calibrated against its intended construct, plan to report only its direct observable rather than the latent property suggested by its name.
 
 ### Phase 4: Turn the Plan Into an Execution Order
 
@@ -180,6 +184,10 @@ Use this structure:
 - [ ] Simplicity is defended
 - [ ] Frontier contribution is justified or explicitly not claimed
 - [ ] Nice-to-have runs are separated from must-run runs
+- [ ] Claim-bearing detectors have positive and benign/randomized negative controls
+- [ ] Effective configuration semantics, including ignored and adapter-dependent parameters, will be verified
+- [ ] A central pipeline mechanism has an executable worked demonstration when feasible
+- [ ] Toy illustrations are not counted as historical, causal, or generality evidence
 ```
 
 #### Step 5.2: Write `refine-logs/EXPERIMENT_TRACKER.md`
@@ -236,6 +244,9 @@ Tracker file: refine-logs/EXPERIMENT_TRACKER.md
 - **Separate must-run from nice-to-have.** Do not let appendix ideas delay the core paper evidence.
 - **Reuse proposal constraints.** Do not invent unrealistic budgets or data assumptions.
 - **Do not fabricate results.** Plan evidence; do not claim evidence.
+- **Detector names are not validation.** Plan controls and calibration for the construct, or narrow the claim to the direct observable.
+- **Call arguments are not effective behavior.** Verify inactive, contradictory, and adapter-dependent configuration.
+- **Demonstrate process claims end to end.** Use a compact executable case when feasible, while keeping toy evidence below historical and general claims.
 
 ## Composing with Other Skills
 
@@ -246,4 +257,3 @@ Tracker file: refine-logs/EXPERIMENT_TRACKER.md
 /run-experiment    -> execute the runs
 /auto-review-loop  -> react to results and iterate on the paper
 ```
-

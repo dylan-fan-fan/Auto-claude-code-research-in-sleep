@@ -162,6 +162,12 @@ mcp__codex__codex:
     or comparative evaluation; generality discussion alone is insufficient.
     Return one canonical claim sentence whose certainty and scope can be reused
     unchanged in the title, abstract, introduction, results, and conclusion.
+    Classify each worked or synthetic example as illustration_only |
+    mechanism_possible | historical_evidence | generality_evidence. A made-up
+    row or executable toy case is not historical or generality evidence unless
+    independent evidence supplies that link. If a detector lacks appropriate
+    positive and benign/randomized negative controls, allow only a claim about
+    its direct observable.
 ```
 
 ### Step 3: Parse and Normalize
@@ -179,6 +185,8 @@ Extract structured fields from Codex response:
 - evidence_breadth: single_case | multiple_related_cases | independent_validation
 - allowed_contribution_label: case_study | checklist | unvalidated_reporting_aid | validated_method_or_framework
 - canonical_claim: "..."
+- demonstration_evidence_role: illustration_only | mechanism_possible | historical_evidence | generality_evidence
+- detector_claim_ceiling: direct_observable | calibrated_construct
 ```
 
 ### Step 3.5: Check Experiment Integrity (if audit exists)
@@ -313,6 +321,8 @@ if research-wiki/ exists:
 - Do not inflate claims beyond what the data supports. If Codex says "partial", do not round up to "yes".
 - A single positive result on one dataset does not support a general claim. Be honest about scope.
 - A single case does not validate a method or framework. Without independent validation, emit only `case_study`, `checklist`, or `unvalidated_reporting_aid`, and preserve the returned canonical claim boundary throughout the paper.
+- A worked example proves only its assigned evidence role. Never promote an invented or toy pipeline trace into evidence about a missing historical run or broad generality.
+- A detector without appropriate construct controls supports only its direct observable, regardless of its filename or label.
 - If `confidence` is low, treat the judgment as inconclusive and add experiments rather than committing to a claim.
 - **Fail closed if the reviewer is unavailable.** If the Codex call fails, first walk the capability fallback chain in `shared-references/reviewer-routing.md` (`gpt-5.6-sol`+`ultra` → `gpt-5.6-sol`+`xhigh` → `gpt-5.5`+`xhigh`, capability errors only). If no allowed pair succeeds: write `CLAIMS_FROM_RESULTS.md` containing ONLY the first line `verdict: REVIEW_UNAVAILABLE` (a machine-checkable gate for pipeline callers), record the same in findings.md, and STOP — CC never substitutes its own claim judgment (a loop can drive, never acquit; `acceptance-gate.md`). Downstream steps (wiki `add_experiment` edges, ablation-planner, paper claims) must not consume a run without a Codex verdict. Exception: the deterministic evidence pre-check (Step 1.5) may still terminally mark a claim `claim_supported: no` for hallucinated evidence — a deterministic rejection needs no reviewer; only SUPPORTIVE or ambiguous outcomes require one.
 - Always record the verdict and reasoning in findings.md, regardless of outcome.

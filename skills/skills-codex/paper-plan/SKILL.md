@@ -230,6 +230,10 @@ spawn_agent:
     - every claimed artifact is reviewer-visible through the actual submission package;
     - a single case is not framed as a validated general framework;
     - title, abstract, introduction, results, and conclusion use the same evidence-bounded claim.
+    - a central pipeline or failure mechanism has a compact worked trace and, when feasible, an executable synthetic demonstration;
+    - claim-bearing detectors have positive and benign/randomized negative controls, or claims stop at direct observables;
+    - intentional historical/source label conflicts have an upfront canonical mapping;
+    - a proposed checklist or trace is compared functionally with the closest field and adjacent-area prior art.
 
     For each weakness, suggest the MINIMUM fix.
     Be specific and actionable — "add X" not "consider more experiments".
@@ -290,6 +294,10 @@ Save the final outline to `PAPER_PLAN.md` in the project root:
 - **One case is not a validated framework** — plan independent validation or narrow the contribution to a case study, checklist, or unvalidated reporting aid
 - **Artifacts must be reviewer-visible** — plan an exact paper-to-supplement pointer and verify the actual submission package, not only the local tree
 - **Claim strength must agree** — use one evidence-bounded claim across title, Abstract, Introduction, results, and Conclusion
+- **Plan one worked trace for process claims** — show input, material transformations, observable, and claim; an executable toy case demonstrates possibility, not missing history or generality
+- **Plan construct-validity controls** — detector-backed claims need positive and benign/randomized negative controls, calibration, and adjudication
+- **Resolve label conflicts upfront** — use one canonical paper term and map historical names at first encounter
+- **Position checklists by function** — compare a proposed trace or checklist with the closest data-lineage, experiment-tracking, reproducibility, or testing work rather than relying on a new name
 - **Figures need detailed descriptions** — especially the hero figure, which must clearly specify comparisons and visual expectations
 - **Section count is flexible** — 5-8 sections depending on paper type. Don't force content into a rigid 5-section template.
 

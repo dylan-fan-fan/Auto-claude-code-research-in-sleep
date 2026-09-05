@@ -229,6 +229,8 @@ Before drafting the front matter, re-read the one-sentence contribution from `PA
 - At each technical abbreviation's first main-text occurrence, write the full term followed by the abbreviation in parentheses, even if the Abstract already defined it
 - For an audit, reproduction, or correction paper, identify the object under study on the first page. Cite a public target; otherwise state plainly that it is unpublished, internal, or reconstructed and name the inspectable evidence that defines it
 - If artifacts support the contribution, point to the exact reviewer-visible supplement path or anonymous link and give the entry command; local existence alone is not availability
+- For a process-heavy contribution, include one compact worked trace from representative input through material transformations to observable and claim. Mark an invented row or diagram as illustration; do not let it imply historical execution or generality
+- Use one canonical paper label for each component. When preserving conflicting historical filenames or emitted labels, show an explicit mapping at their first table or figure
 - Use familiar, field-standard terms; do not rename ordinary “analysis” or “investigation” with novelty-seeking vocabulary such as “postmortem” unless the term is established and necessary
 - Give each sentence one job. Aim for about 25 English words or fewer; split sentences longer than about 35 words unless technical precision requires them
 - Delete any sentence that does not advance the problem, importance, gap, approach, finding, contribution, or scope; never write to fill space
@@ -567,6 +569,11 @@ mcp__codex__codex:
     - a single case is presented as a validated framework without independent validation;
     - the title is stronger than the canonical qualified claim;
     - code presence is described as execution without call-path and preserved-result evidence.
+    - a central pipeline mechanism is left as dense prose despite a compact worked trace being feasible;
+    - a detector-to-construct claim lacks positive and benign/randomized negative controls or appropriate claim narrowing;
+    - a toy demonstration is used as evidence of missing history or general validity;
+    - intentional label conflicts lack an upfront legend or mapping;
+    - a proposed checklist or trace is not functionally positioned against the closest prior art.
 
     For each issue, specify: severity (CRITICAL/MAJOR/MINOR), location, and fix.
 
@@ -604,6 +611,12 @@ Before declaring done:
 - [ ] Artifact availability was verified from the reviewer-facing submission package, with exact paths and entry commands stated in the paper
 - [ ] A one-case paper is framed as a case study unless independent validation supports a method or framework claim
 - [ ] Material code is distinguished as present, called, executed, and result-backed
+- [ ] A process-heavy central claim has a compact end-to-end worked trace
+- [ ] Toy or synthetic examples are labeled by evidence role and do not prove missing history or generality
+- [ ] Claim-bearing detectors have suitable controls and calibration, or claims stop at their direct observables
+- [ ] Effective configuration semantics, including ignored and adapter-dependent parameters, are reported rather than inferred from call-site arguments
+- [ ] Intentional source-label conflicts have one canonical paper term and an upfront mapping
+- [ ] New checklists or traces are compared functionally with the closest prior art
 - [ ] Title passes the title-alone program-list test and is the shortest accurate choice among at least three candidates
 - [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification
 - [ ] The first two Introduction paragraphs directly state the research question, why it matters, and the primary finding
@@ -696,6 +709,10 @@ Before declaring done:
 - **First-use definitions are mandatory** — define every reader-facing technical abbreviation before use; audit the Abstract, main text, and captions separately
 - **Evidence-bounded framing is mandatory** — the title may be shorter than the body claim but never stronger; necessary qualifiers belong near one canonical claim, not scattered as evasive hedging
 - **Code presence is not execution evidence** — distinguish present, called, executed, and result-backed components
+- **Show process claims** — use a compact worked trace and an executable synthetic counterfactual when feasible, while keeping toy evidence below historical and general claims
+- **Detector claims require construct controls** — add positive and benign/randomized negative controls or report only the direct observable
+- **Configuration means effective behavior** — check ignored, contradictory, and adapter-dependent parameters
+- **Readers get one label map** — preserve raw historical labels in artifacts, but resolve conflicts visibly at first encounter
 - **Page limit rules differ by venue** — ML conferences: main body to Conclusion, references/appendix NOT counted. **IEEE: references ARE counted toward the page limit.**
 - **Clean bib** — references.bib must only contain entries that are actually `\cite`d
 - **Section count is flexible** — match PAPER_PLAN structure, don't force into 5 sections

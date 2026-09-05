@@ -450,6 +450,32 @@ For every implementation component material to a claim, distinguish:
 
 Never infer a later level from an earlier one. Explain why material uncalled or stub code is included, or omit it from the reviewer-facing artifact if it is irrelevant.
 
+### Show the Mechanism with a Worked Trace
+
+When the contribution depends on a multi-stage pipeline or a failure mechanism, include one compact end-to-end example that a reader can follow without reconstructing it from prose. Show the representative input, each material transformation, the resulting observable, and how the claim would be formed.
+
+If the claimed mechanism can be exercised safely and cheaply, prefer an executable synthetic counterfactual or fault-injection demonstration over a purely verbal example. Keep the evidence labels honest:
+
+- a diagram or invented row is a pedagogical illustration;
+- an executable toy case demonstrates that the mechanism can occur under specified conditions;
+- neither proves that a missing historical run followed that path or that the mechanism generalizes.
+
+### Validate Detectors Against Their Intended Construct
+
+A detector name does not establish what it measures. For every detector that supports a scientific claim, provide suitable positive controls, benign or randomized negative controls, base-rate or false-positive reporting, threshold justification, and manual adjudication when the construct requires it. If these are unavailable, report only the detector's direct observable, such as “matched this regular expression,” rather than the latent property suggested by its name.
+
+### Audit Configuration Semantics
+
+Check whether configuration values are active, ignored, contradictory, or adapter-dependent. For example, a sampling temperature passed during greedy decoding may be inert in one backend and mishandled in another. Report the effective behavior, not merely the arguments present at the call site; if an adapter is missing, state that the effective behavior is unverified.
+
+### Resolve Reader-Facing Label Conflicts
+
+Historical names, filenames, emitted labels, and paper terminology may disagree. Preserve raw labels in the artifact, but give readers one canonical paper term. At the first table or figure that exposes a conflict, provide a visible legend or mapping. Do not make readers discover several pages later that two labels refer to the same component or that a historical label is intentionally retained.
+
+### Position Checklists and Traces Against Prior Art
+
+When proposing a checklist, trace, evidence ladder, or provenance scheme, compare its functions with the closest work in the paper's field and relevant adjacent areas such as data lineage, experiment tracking, reproducibility, or software testing. State which elements are adopted, specialized, or genuinely new. A list of citations is not a comparison, and a new name does not create novelty.
+
 ### Vocabulary Signaling
 
 Some verbs make the work sound like a loose combination of existing pieces:
@@ -570,6 +596,12 @@ Do:
 | Artifact exists locally but reviewers cannot locate it | Verify the reviewer-facing upload and point to exact files and commands in the paper |
 | Title is stronger than the qualified body claim | Use one canonical claim boundary across title, Abstract, Introduction, and Conclusion |
 | Implemented code described as executed evidence | Record present, called, executed, and result-backed status separately |
+| Pipeline mechanism explained only in dense prose | Add one compact worked trace; use an executable synthetic demonstration when the mechanism itself is a contribution |
+| Toy example presented as historical or general evidence | Label it as illustration or possibility evidence and keep historical and general claims separate |
+| Detector label treated as construct validity | Add positive and benign/randomized negative controls, or narrow the claim to the direct observable |
+| Call-site arguments treated as effective configuration | Check inactive, contradictory, and adapter-dependent parameters and report what actually took effect |
+| Historical labels intentionally conflict without an upfront key | Use one canonical paper label and show a visible mapping at first encounter |
+| New checklist is not compared with adjacent tools | Compare functions and evidence against the closest field and cross-domain prior art |
 | Long, clause-heavy sentence | Split it into direct sentences with one job each |
 | Novel-sounding name for a familiar activity | Use the field-standard term unless the new term adds necessary meaning |
 | Filler written only to sound academic | Delete it; do not write to fill space |
@@ -618,6 +650,12 @@ Do:
 - [ ] The paper points to reviewer-visible artifact files and an entry command, verified from the actual submission package.
 - [ ] A single case is labeled as a case study unless independent evidence validates a broader method or framework.
 - [ ] Material components are labeled separately as present, called, executed, and result-backed.
+- [ ] A process-heavy central claim has a compact end-to-end worked trace.
+- [ ] Synthetic or toy demonstrations are labeled by their actual evidence role and are not used to prove missing history or generality.
+- [ ] Claim-bearing detectors have appropriate controls and calibration, or their claims are limited to direct observables.
+- [ ] Effective configuration semantics were checked, including ignored or adapter-dependent parameters.
+- [ ] Intentional source-label conflicts have a canonical paper term and an upfront mapping.
+- [ ] Proposed checklists or traces are compared functionally with the closest prior art.
 
 ### Structure
 
