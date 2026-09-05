@@ -399,6 +399,19 @@ For example, avoid mixing:
 
 Choose the best term and keep it stable.
 
+### Define Technical Terms and Abbreviations on First Use
+
+Never make readers guess an abbreviation. At its first reader-facing use, write the full technical term followed by the abbreviation in parentheses: `command-line interface (CLI)`. This applies even to abbreviations that may feel familiar to the authors, including API, CLI, GPU, and LLM.
+
+- Treat the Abstract and main text as separate scopes. Define an abbreviation in the Abstract, then define it again at its first occurrence in the main text.
+- Define before use, never in a later sentence or section.
+- Make figure and table captions self-contained: define any abbreviation needed to understand the caption, or avoid the abbreviation there.
+- Introduce an abbreviation only when it improves repeated reading. If a term appears fewer than about three times, normally spell it out instead.
+- Avoid acronym overload. Prefer a plain, standard term when a short label is unnecessary.
+- Standard mathematical symbols, units, and venue names may remain unexpanded only when expansion would reduce rather than improve clarity.
+
+An automated uppercase-token scan can find candidates, but it does not replace reading the Abstract, main text, and captions in order. The final test is whether an adjacent-domain reader encounters the definition before needing the abbreviation.
+
 ### Vocabulary Signaling
 
 Some verbs make the work sound like a loose combination of existing pieces:
@@ -513,6 +526,7 @@ Do:
 | Generic abstract opening | Start from the paper's actual contribution |
 | Bloated or jargon-heavy title | Rewrite for one-pass program-list comprehension; move secondary details to the abstract |
 | Introduction hides the research question or finding | State the question, importance, and primary finding in the first one or two paragraphs |
+| Technical abbreviation used before definition | Write the full term first, followed by the abbreviation in parentheses; repeat this for its first use in both the Abstract and main text |
 | Long, clause-heavy sentence | Split it into direct sentences with one job each |
 | Novel-sounding name for a familiar activity | Use the field-standard term unless the new term adds necessary meaning |
 | Filler written only to sound academic | Delete it; do not write to fill space |
@@ -564,6 +578,9 @@ Do:
 
 ### Writing
 
+- [ ] Every technical abbreviation is expanded before first use in the Abstract and again in the main text.
+- [ ] Figure and table captions define abbreviations needed for standalone interpretation.
+- [ ] Abbreviations used fewer than about three times were removed unless they materially improve clarity.
 - [ ] Introduction sentences are direct and normally stay below about 25 English words; every sentence above about 35 words was split or justified by technical necessity.
 - [ ] Familiar, field-standard terms replace unusual or novelty-seeking vocabulary.
 - [ ] Every Introduction sentence advances the argument; no filler remains.

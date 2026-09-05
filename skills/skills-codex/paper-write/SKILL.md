@@ -154,11 +154,12 @@ Before drafting the front matter, re-read the one-sentence contribution from `PA
 - Structure: problem → approach → key result → implication
 - Include one concrete quantitative result
 - 150-250 words (check venue limit)
-- No citations, no undefined acronyms
+- No citations. Spell out every technical abbreviation at first use, including familiar-looking terms such as CLI, API, GPU, and LLM; the Abstract and main text are separate first-use scopes
 - No `\begin{abstract}` — that's in main.tex
 
 **§1 Introduction:**
 - In the first one or two paragraphs, state the research question, why it matters, and the primary finding in plain, direct language
+- At each technical abbreviation's first main-text occurrence, write the full term followed by the abbreviation in parentheses, even if the Abstract already defined it
 - Use familiar, field-standard terms; do not rename ordinary “analysis” or “investigation” with novelty-seeking vocabulary such as “postmortem” unless the term is established and necessary
 - Give each sentence one job. Aim for about 25 English words or fewer; split sentences longer than about 35 words unless technical precision requires them
 - Delete any sentence that does not advance the problem, importance, gap, approach, finding, contribution, or scope; never write to fill space
@@ -294,7 +295,7 @@ After drafting all sections, run five sequential audit passes. De-AI polish is i
 
 **Pass 3: Sentence Architecture** — flag sentences over 40 words, keep subject and verb close, put familiar context first and new information later, and ensure each paragraph does one job.
 
-**Pass 4: Keyword Consistency** — apply the Banana Rule: do not rename defined technical terms just to avoid repetition. If Methods defines a group, variable, or technique name, Results, Discussion, tables, and captions must use the same term.
+**Pass 4: Keyword Consistency and First-Use Definitions** — apply the Banana Rule: do not rename defined technical terms just to avoid repetition. If Methods defines a group, variable, or technique name, Results, Discussion, tables, and captions must use the same term. Then read the Abstract and main text as separate scopes: expand every technical abbreviation before first use, including CLI, API, GPU, and LLM. Check captions independently and remove one-off abbreviations unless they materially improve clarity.
 
 **Pass 5: Numerical and Citation Integrity** — check sample sizes, percentages, significant figures, figure/table values, and whether citations support the claims they are attached to.
 
@@ -347,6 +348,7 @@ spawn_agent:
     7. Are figures/tables clearly described and properly referenced?
     8. Read the title without the abstract: can an adjacent-domain reader paraphrase the subject and contribution after one reading? If not, treat it as MAJOR and propose 3 shorter accurate alternatives.
     9. From the first two introduction paragraphs alone, can the reader state the research question, why it matters, and the primary finding? Flag long or clause-heavy sentences, filler, and non-standard vocabulary used where a common term would be clearer.
+    10. Is every technical abbreviation expanded before first use in the Abstract and again in the main text? Check captions independently and treat undefined abbreviations as MAJOR.
 
     For each issue, specify: severity (CRITICAL/MAJOR/MINOR), location, and fix.
 
@@ -377,6 +379,8 @@ Before declaring done:
 - [ ] No TODO/FIXME/XXX markers left in the text
 - [ ] No `[VERIFY]` markers left unchecked
 - [ ] Abstract is self-contained (understandable without reading the paper)
+- [ ] Every technical abbreviation is expanded before first use in the Abstract and again in the main text
+- [ ] Captions define abbreviations needed for standalone interpretation; one-off abbreviations were removed
 - [ ] Title passes the title-alone program-list test and is the shortest accurate choice among at least three candidates
 - [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification
 - [ ] The first two Introduction paragraphs directly state the research question, why it matters, and the primary finding
@@ -467,6 +471,7 @@ Before declaring done:
 - **Calibrate, don't hedge** — match each claim to its evidence's actual scope and modality, then state it directly; generic caveats live in Limitations only (the CONFIDENT PROSE, HONEST LIMITS block above is the contract)
 - **Launch, not progress report** — organize around the strongest genuine advantage, pick the contest the paper wins, give every experiment an argumentative duty; unfavorable numbers stay in the tables, explained as tradeoffs where the evidence supports that and stated neutrally where it does not — never narrated as defeats, never dressed as a tradeoff they are not (rules 9-12 above)
 - **Venue style matters** — ML conferences (ICLR/NeurIPS/ICML) use `natbib` (`\citep`/`\citet`); **IEEE venues use `cite` package (`\cite{}`, numeric)**. Never mix.
+- **First-use definitions are mandatory** — define every reader-facing technical abbreviation before use; audit the Abstract, main text, and captions separately
 - **Page limit rules differ by venue** — ML conferences: main body to Conclusion, references/appendix NOT counted. **IEEE: references ARE counted toward the page limit.**
 - **Clean bib** — references.bib must only contain entries that are actually `\cite`d
 - **Section count is flexible** — match PAPER_PLAN structure, don't force into 5 sections

@@ -240,13 +240,17 @@ spawn_agent:
        - Can the reader state the research question, why it matters, and the primary finding?
        - Flag sentences longer than about 35 words, clause-heavy phrasing, filler, and non-standard vocabulary used where a familiar term would be clearer.
        - Treat a hard-to-follow opening as MAJOR and propose a direct rewrite, not cosmetic polishing.
-    9. **Visual Review** (from the PDF):
+    9. **Abbreviation and Technical-Term Accessibility**:
+       - Does every reader-facing technical abbreviation appear only after its full term, including CLI, API, GPU, and LLM?
+       - Audit the Abstract and main text as separate first-use scopes, then check captions for standalone readability.
+       - Flag any abbreviation used before definition as MAJOR; remove one-off abbreviations unless they materially improve clarity.
+    10. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    10. **Verdict**: Ready for submission? Yes / Almost / No
+    11. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
     title clarity and length, self-containedness, notation consistency, AND visual presentation quality.
@@ -404,13 +408,17 @@ spawn_agent:
        - Can the reader state the research question, why it matters, and the primary finding?
        - Flag sentences longer than about 35 words, clause-heavy phrasing, filler, and non-standard vocabulary used where a familiar term would be clearer.
        - Treat a hard-to-follow opening as MAJOR and propose a direct rewrite, not cosmetic polishing.
-    9. **Visual Review** (from the PDF):
+    9. **Abbreviation and Technical-Term Accessibility**:
+       - Does every reader-facing technical abbreviation appear only after its full term, including CLI, API, GPU, and LLM?
+       - Audit the Abstract and main text as separate first-use scopes, then check captions for standalone readability.
+       - Flag any abbreviation used before definition as MAJOR; remove one-off abbreviations unless they materially improve clarity.
+    10. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    10. **Verdict**: Ready for submission? Yes / Almost / No
+    11. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
     title clarity and length, self-containedness, notation consistency, and visual presentation quality.
@@ -470,6 +478,8 @@ After the final recompilation, run a **location-aware** format compliance check.
 **Title gate (blocking for a submission-ready verdict):** read the title without the abstract and apply `../shared-references/writing-principles.md#paper-titles`. If it fails the program-list test, draft at least three shorter accurate alternatives, select the shortest one that preserves necessary scope, update the title, and recompile. Do not mark the paper ready while the title remains bloated, jargon-stacked, or hard to paraphrase after one reading.
 
 **Introduction gate (blocking for a submission-ready verdict):** read only the first two Introduction paragraphs. They must expose the research question, why it matters, and the primary finding in plain language. Rewrite any avoidable sentence over about 35 words, clause-heavy construction, filler sentence, or novelty-seeking term used in place of standard vocabulary. Do not mark the paper ready until an adjacent-domain reader can paraphrase the opening after one pass.
+
+**First-use definition gate (blocking for a submission-ready verdict):** read the Abstract and main text as separate scopes, in order, and inspect figure and table captions. Every reader-facing technical abbreviation must be preceded by its full term at first use, even for familiar-looking terms such as CLI, API, GPU, and LLM. Define caption abbreviations needed for standalone interpretation, and remove one-off abbreviations unless they materially improve clarity. Do not mark the paper ready while a reader must guess an abbreviation.
 
 ```bash
 # If the log lacks file/line data, rerun the final compile once with -file-line-error.
@@ -619,6 +629,7 @@ paper/
 - **Respect the paper's claims** — narrow genuine overclaims rather than adding unsupported new claims, and state supported claims directly rather than wrapping them in fresh hedges
 - **Title is a submission gate** — choose the shortest accurate title that passes the program-list test; move nonessential mechanism and evaluation detail into the abstract
 - **Plain Introduction is a submission gate** — state the question, importance, and primary finding upfront; split long sentences, delete filler, and use standard vocabulary
+- **First-use definitions are a submission gate** — expand technical abbreviations before use in the Abstract and again in the main text; make captions self-contained
 - **Global consistency** — when renaming notation or changing a claim's scope, keep every restatement semantically consistent across ALL files (abstract, intro, method, experiments, theory sections, conclusion, tables, figure captions); consistency means matching scope, not copying disclaimer sentences everywhere
 - **Edit-whitelist rejections are LOGGED, not silently dropped** — when `EDIT_WHITELIST` is set and an edit is rejected for a path or forbidden-operation violation, the rejection MUST be appended to `PAPER_IMPROVEMENT_LOG.md` with file, reason, offending pattern, and the original reviewer concern. The loop reports a rejection summary at the end of every round (and in the checkpoint, if `HUMAN_CHECKPOINT = true`). Never silently swallow a whitelist rejection — the audit trail is the whole point of the parameter.
 

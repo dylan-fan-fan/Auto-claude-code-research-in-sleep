@@ -95,6 +95,11 @@ mcp__codex__codex:
        the research question, why it matters, and the primary finding. Treat
        long or clause-heavy sentences, filler, and novelty-seeking vocabulary
        used instead of standard terms as major writing defects.
+    7. Whether every reader-facing technical abbreviation is expanded before
+       first use. Audit the Abstract and main text as separate scopes and check
+       captions independently. Treat undefined abbreviations, including
+       familiar-looking terms such as CLI, API, GPU, and LLM, as major
+       accessibility defects.
 
     === SCOPE LIMITS (these bound what you PROPOSE, never what you look for) ===
     Report anything that is actually wrong here — including a rare-looking case, if
@@ -202,6 +207,7 @@ Update project memory/notes with key review conclusions.
 - Focus on ACTIONABLE feedback — "what experiment would fix this?"
 - For paper reviews, assess the title without the abstract; do not declare the narrative settled until the title passes the program-list test
 - For paper reviews, assess the first two Introduction paragraphs in isolation; do not declare the narrative settled until the question, importance, and primary finding are immediately recoverable in plain language
+- For paper reviews, do not declare the writing accessible until technical abbreviations are defined before use in the Abstract and again in the main text, with self-contained captions
 - Document the threadId for potential future resumption
 - The review document should be self-contained (readable without the conversation)
 
