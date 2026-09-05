@@ -135,7 +135,11 @@ Search for `\revise{...}`, `\fix{...}`, `\new{...}`, `\todo{...}`, `\todonotes{.
 
 Read the inherited title without the abstract and apply `../shared-references/writing-principles.md#paper-titles`. Record PASS/FAIL and the title's English word count in `BASELINE.md`. If it fails the program-list test, add a MAJOR, text-fixable item to `KNOWN_WEAKNESSES.md`; Phase 2 must generate at least three shorter accurate alternatives and select the shortest one that preserves necessary scope. The inherited title is never grandfathered in merely because the rest of the manuscript is polished.
 
-**Output of Phase 0.5**: `BASELINE.md` with initial page count, title-audit result, anonymity-scan summary, residual-color list, overfull-hbox count.
+**Introduction audit**:
+
+Read only the first two Introduction paragraphs. Record whether they plainly state the research question, why it matters, and the primary finding. Flag avoidable sentences over about 35 English words, clause-heavy phrasing, filler, and non-standard labels such as “postmortem” when “analysis” or “investigation” is accurate. Any failure becomes a MAJOR, text-fixable `KNOWN_WEAKNESSES.md` item for Phase 2.
+
+**Output of Phase 0.5**: `BASELINE.md` with initial page count, title and Introduction audit results, anonymity-scan summary, residual-color list, overfull-hbox count.
 
 ### Phase 1: Audit (zero edits)
 
@@ -362,14 +366,15 @@ When Phase 0.5 or Phase 4 detects page overflow, apply this **ordered** heuristi
 
 ## Convergence Criteria (Phase 2 stop condition)
 
-Phase 2's per-round loop terminates when **all four** hold:
+Phase 2's per-round loop terminates when **all five** hold:
 
 1. **No new CRITICAL or MAJOR text-fixable findings** in the round's reviewer output (compared to the running running-deduped weakness list).
 2. **Page budget passes** — `/paper-compile` reports page count ≤ venue limit.
 3. **All audits non-blocking** — `/proof-checker`, `/paper-claim-audit`, `/citation-audit --soft-only` all return `verdict ∈ {PASS, NOT_APPLICABLE}` (not `WARN/FAIL/BLOCKED/ERROR`).
 4. **Title passes** — read alone, the title passes the shared program-list test; any title longer than about 16 English words or containing multiple subtitle clauses has a recorded accuracy or scope justification.
+5. **Introduction passes** — the first two paragraphs expose the research question, importance, and primary finding in plain language, with no unresolved long-sentence, filler, or non-standard-vocabulary finding.
 
-If after `ROUNDS` (default 2) any of (1)/(2)/(3)/(4) is still failing, emit a checkpoint to the user asking whether to continue with an extra round (not auto-extend). The user explicitly approving an extra round overrides the default-2 cap.
+If after `ROUNDS` (default 2) any of (1)/(2)/(3)/(4)/(5) is still failing, emit a checkpoint to the user asking whether to continue with an extra round (not auto-extend). The user explicitly approving an extra round overrides the default-2 cap.
 
 This pattern is borrowed from `/rebuttal` Phase 7's "terminate when no new substantive issues" — the same shape works for resubmit.
 
@@ -414,6 +419,7 @@ The skill emits one of 7 verdicts (the 6 from the assurance contract + a `USER_D
 - **Never overwrite prior submission directories.** This is the single hardest invariant. The skill aborts at Phase 0 if the target dir already exists.
 - **Bib is frozen.** All citation-audit findings flow through `--soft-only` and emerge as text-rewrite proposals, not bib edits.
 - **The inherited title is only a candidate.** It must pass the shared title-alone program-list test before the resubmission can converge.
+- **A polished old Introduction is not grandfathered in.** It must pass the plain-language opening test before the resubmission can converge.
 - **Edit whitelist is binding.** Every Phase 2 round respects the whitelist; rejections logged to `PAPER_IMPROVEMENT_LOG.md`; the user sees a per-round summary at the round checkpoint.
 - **Per-round diff gate is mandatory.** Multi-round drift is the highest-risk failure mode for resubmit (a small softening at round 1 + another small softening at round 2 can compound into a meaningful framing change). The orchestrator MUST inspect each round's diff before next round.
 - **Convergence criteria are fixed.** Default is 2 rounds; a 3rd round requires explicit user approval at the round-2 checkpoint. The loop does not auto-extend.

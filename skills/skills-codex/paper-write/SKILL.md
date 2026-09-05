@@ -158,6 +158,10 @@ Before drafting the front matter, re-read the one-sentence contribution from `PA
 - No `\begin{abstract}` — that's in main.tex
 
 **§1 Introduction:**
+- In the first one or two paragraphs, state the research question, why it matters, and the primary finding in plain, direct language
+- Use familiar, field-standard terms; do not rename ordinary “analysis” or “investigation” with novelty-seeking vocabulary such as “postmortem” unless the term is established and necessary
+- Give each sentence one job. Aim for about 25 English words or fewer; split sentences longer than about 35 words unless technical precision requires them
+- Delete any sentence that does not advance the problem, importance, gap, approach, finding, contribution, or scope; never write to fill space
 - Open with a compelling hook (1-2 sentences, problem motivation)
 - State the gap clearly ("However, ...")
 - List contributions as a numbered or bulleted list
@@ -282,6 +286,8 @@ This prevents bib bloat (e.g., 948 lines → 215 lines in testing).
 
 After drafting all sections, run five sequential audit passes. De-AI polish is included as one part of this quality pass, not a replacement for it.
 
+**Blocking Introduction Gate:** Give a reader only the first two paragraphs. They must be able to paraphrase the research question, why it matters, and the primary finding. Rewrite before continuing if the opening hides any of these, uses avoidable non-standard vocabulary, contains clause-heavy sentences, or includes filler.
+
 **Pass 1: Clutter Extraction** — strip sentences to their cleanest components, remove filler, and remove AI-isms.
 
 **Pass 2: Active Voice and Verb Vitality** — identify who did what, convert unnecessary passive voice, and resurrect smothered verbs.
@@ -340,6 +346,7 @@ spawn_agent:
     6. For theory papers: are proof sketches adequate?
     7. Are figures/tables clearly described and properly referenced?
     8. Read the title without the abstract: can an adjacent-domain reader paraphrase the subject and contribution after one reading? If not, treat it as MAJOR and propose 3 shorter accurate alternatives.
+    9. From the first two introduction paragraphs alone, can the reader state the research question, why it matters, and the primary finding? Flag long or clause-heavy sentences, filler, and non-standard vocabulary used where a common term would be clearer.
 
     For each issue, specify: severity (CRITICAL/MAJOR/MINOR), location, and fix.
 
@@ -372,6 +379,9 @@ Before declaring done:
 - [ ] Abstract is self-contained (understandable without reading the paper)
 - [ ] Title passes the title-alone program-list test and is the shortest accurate choice among at least three candidates
 - [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification
+- [ ] The first two Introduction paragraphs directly state the research question, why it matters, and the primary finding
+- [ ] Introduction sentences are easy to parse, normally no longer than about 25 English words, with sentences above about 35 words split or technically justified
+- [ ] The Introduction uses familiar, field-standard vocabulary and contains no filler written merely to sound academic
 - [ ] Related work is ≥1 full page
 - [ ] references.bib contains ONLY cited entries (no bloat)
 - [ ] **No stale section files** — every .tex in `sections/` is `\input`ed by `main.tex`
@@ -463,6 +473,7 @@ Before declaring done:
 - **Backup before overwrite** — never destroy existing `paper/` directory without backing up
 - **Front-load the contribution** — do not hide the payoff until the experiments or appendix
 - **Keep the title short and legible** — move nonessential mechanism and evaluation detail into the abstract; never trade away a necessary anti-overclaim qualifier
+- **Plain language is a submission gate** — simple ideas must be stated simply; delete filler, split long sentences, and prefer standard terms over novelty-seeking labels
 - **Order results by argument, not by lab notebook** — present experiments in the sequence that best builds the case, never in the order they happened to run
 - **Controls and ablations sit next to the claim they test** — not pooled in a distant subsection where the reader has forgotten what was at stake
 

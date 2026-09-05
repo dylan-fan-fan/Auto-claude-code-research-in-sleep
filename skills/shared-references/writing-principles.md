@@ -166,6 +166,30 @@ It should satisfy the following:
 - the Introduction should include 2-4 contribution bullets,
 - the central story should already make sense before technical detail arrives.
 
+### Plain-Language Opening Contract
+
+The first one or two paragraphs must make three things explicit in plain language:
+
+1. **Research question** — what concrete problem is the paper trying to solve or understand?
+2. **Why it matters** — what scientific or practical consequence makes the question worth answering?
+3. **Primary finding** — what did the paper actually find, prove, or build?
+
+A useful diagnostic form is: “We study [question]. This matters because [consequence]. We find [primary result].” The prose need not use these exact words, but a reader should be able to recover all three answers immediately. Do not delay the primary finding until the contribution bullets or experiments section.
+
+### Sentence and Vocabulary Rules
+
+- Give each sentence one main job. Prefer a direct subject, an early verb, and one main clause.
+- As a default heuristic, aim for no more than about 25 English words per sentence. A sentence longer than about 35 words should normally be split; keep it only when technical precision genuinely requires the structure.
+- Remove nested clauses, long parenthetical interruptions, nominalizations, and decorative transitions when a shorter construction says the same thing.
+- Prefer familiar, field-standard words. Use “analysis” or “investigation” instead of an unusual label such as “postmortem” unless the unusual term is established in the field and adds necessary meaning.
+- Do not rename a familiar method or activity merely to sound novel. Define any unavoidable specialist term in plain language at first use.
+- Every sentence must advance the problem, importance, gap, research question, approach, finding, contribution, or scope. If it does none of these, delete it.
+- Never add prose to fill space, create an academic tone, or make simple work sound sophisticated. Brevity is preferable to empty polish.
+
+### Introduction Comprehension Test
+
+Give an adjacent-domain reader only the first two paragraphs. If they cannot paraphrase the research question, why it matters, and the primary finding, rewrite the opening. If they stumble over a sentence or non-standard term, simplify it rather than expecting the reader to decode it.
+
 ### Recommended Structure
 
 1. **Opening hook**
@@ -488,6 +512,10 @@ Do:
 |--------|-----|
 | Generic abstract opening | Start from the paper's actual contribution |
 | Bloated or jargon-heavy title | Rewrite for one-pass program-list comprehension; move secondary details to the abstract |
+| Introduction hides the research question or finding | State the question, importance, and primary finding in the first one or two paragraphs |
+| Long, clause-heavy sentence | Split it into direct sentences with one job each |
+| Novel-sounding name for a familiar activity | Use the field-standard term unless the new term adds necessary meaning |
+| Filler written only to sound academic | Delete it; do not write to fill space |
 | Inconsistent terminology | Keep one name per concept |
 | Too much passive voice | Prefer active constructions |
 | Hedging everywhere | Keep hedging only where uncertainty is real |
@@ -523,6 +551,7 @@ Do:
 
 - [ ] The contribution can be stated in one sentence.
 - [ ] The Introduction makes the What / Why / So What clear.
+- [ ] The first two Introduction paragraphs state the research question, why it matters, and the primary finding.
 - [ ] Every major experiment supports a clear claim.
 
 ### Structure
@@ -535,6 +564,9 @@ Do:
 
 ### Writing
 
+- [ ] Introduction sentences are direct and normally stay below about 25 English words; every sentence above about 35 words was split or justified by technical necessity.
+- [ ] Familiar, field-standard terms replace unusual or novelty-seeking vocabulary.
+- [ ] Every Introduction sentence advances the argument; no filler remains.
 - [ ] Terminology is consistent.
 - [ ] There are no generic field-background openings.
 - [ ] Unnecessary hedging has been removed.

@@ -53,6 +53,10 @@ spawn_agent:
        test in `../shared-references/writing-principles.md#paper-titles`. Treat a
        bloated, jargon-stacked, or hard-to-follow title as a major narrative
        weakness and propose 3 shorter accurate alternatives.
+    6. If an Introduction exists, whether its first two paragraphs plainly state
+       the research question, why it matters, and the primary finding. Treat
+       long or clause-heavy sentences, filler, and novelty-seeking vocabulary
+       used instead of standard terms as major writing defects.
 
     === SCOPE LIMITS (these bound what you PROPOSE, never what you look for) ===
     Report anything that is actually wrong here — including a rare-looking case, if
@@ -144,6 +148,7 @@ Save a trace for every `spawn_agent`, `send_input`, or `oracle-pro` review call 
 - Push back on criticisms you disagree with, but accept valid ones
 - Focus on ACTIONABLE feedback — "what experiment would fix this?"
 - For paper reviews, assess the title without the abstract; do not declare the narrative settled until the title passes the program-list test
+- For paper reviews, assess the first two Introduction paragraphs in isolation; do not declare the narrative settled until the question, importance, and primary finding are immediately recoverable in plain language
 - Document the agent id for potential future resumption
 - The review document should be self-contained (readable without the conversation)
 

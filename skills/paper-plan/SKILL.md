@@ -221,6 +221,7 @@ For each section, specify:
 - **Self-contained check**: can a reader understand this without the paper?
 
 ### §1 Introduction
+- **First-two-paragraph contract**: [research question] → [why it matters] → [primary finding], stated in plain, direct language
 - **Opening hook**: [1-2 sentences that motivate the problem]
 - **Gap / challenge**: [what's missing in prior work, and why prior work is insufficient]
 - **One-sentence contribution**: [the main takeaway of the paper]
@@ -321,8 +322,10 @@ mcp__codex__codex:
     5. Page budget feasibility (MAX_PAGES = main body to Conclusion end, excluding refs/appendix)
     6. Front-matter strength — are the abstract, introduction, and hero figure plan strong enough for skim-reading reviewers?
     7. Title quality — read it alone: is it short, plain enough to parse in one pass, and free of stacked jargon or abstract-level detail?
+    8. Introduction clarity — do the first two paragraphs directly state the research question, why it matters, and the primary finding, using standard vocabulary and sentences that are easy to parse?
 
     If the title fails, propose 3 shorter accurate alternatives and identify the shortest one that preserves necessary scope.
+    If the introduction fails, identify the minimum rewrite and flag long, clause-heavy, filler, or novelty-seeking terminology.
 
     For each weakness, suggest the MINIMUM fix.
     Be specific and actionable — "add X" not "consider more experiments".
@@ -376,6 +379,7 @@ Save the final outline to `PAPER_PLAN.md` in the project root:
 - **Venue-specific norms** — ML conferences (ICLR/NeurIPS/ICML) use `natbib` (`\citep`/`\citet`); **IEEE venues use `cite` package (`\cite{}`, numeric style)**
 - **Claims-Evidence Matrix is the backbone** — every claim must map to evidence, every experiment must support a claim
 - **Title must pass alone** — compare at least three candidates and choose the shortest accurate title that an adjacent-domain reader can paraphrase after one reading
+- **Plan a plain-language opening** — the first two paragraphs must expose the research question, importance, and primary finding; do not budget space for throat-clearing or academic filler
 - **Front-load the story** — the outline should make the contribution clear in the title, abstract, introduction, and hero figure before the reader reaches the full method
 - **Figures need detailed descriptions** — especially the hero figure, which must clearly specify comparisons and visual expectations
 - **Section count is flexible** — 5-8 sections depending on paper type. Don't force content into a rigid 5-section template.
