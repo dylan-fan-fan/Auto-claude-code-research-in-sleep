@@ -106,6 +106,13 @@ spawn_agent:
 
     Be honest. Do not inflate claims beyond what the data supports.
     A single positive result on one dataset does not support a general claim.
+    For a case study, audit, reproduction, or correction, classify the allowed
+    contribution label as case_study | checklist | unvalidated_reporting_aid |
+    validated_method_or_framework. The last label requires direct independent
+    validation such as multiple independent cases, controlled fault injection,
+    or comparative evaluation; generality discussion alone is insufficient.
+    Return one canonical claim sentence whose certainty and scope can be reused
+    unchanged in the title, abstract, introduction, results, and conclusion.
 ```
 
 ### Step 3: Parse and Normalize
@@ -120,6 +127,9 @@ Extract structured fields from the secondary Codex response:
 - suggested_claim_revision: "..."
 - next_experiments_needed: "..."
 - confidence: high | medium | low
+- evidence_breadth: single_case | multiple_related_cases | independent_validation
+- allowed_contribution_label: case_study | checklist | unvalidated_reporting_aid | validated_method_or_framework
+- canonical_claim: "..."
 ```
 
 ### Step 3.5: Check Experiment Integrity (if audit exists)
@@ -229,6 +239,7 @@ if research-wiki/ exists:
 - **The secondary Codex agent is the judge, not the local executor.** The local executor collects evidence and routes; the reviewer agent evaluates. This prevents post-hoc rationalization.
 - Do not inflate claims beyond what the data supports. If Codex says "partial", do not round up to "yes".
 - A single positive result on one dataset does not support a general claim. Be honest about scope.
+- A single case does not validate a method or framework. Without independent validation, emit only `case_study`, `checklist`, or `unvalidated_reporting_aid`, and preserve the returned canonical claim boundary throughout the paper.
 - If `confidence` is low, treat the judgment as inconclusive and add experiments rather than committing to a claim.
 - **Fail closed if the reviewer is unavailable.** Follow the capability fallback
   in `reviewer-routing.md` (`gpt-5.6-sol` + `ultra` → `gpt-5.6-sol` + `xhigh`

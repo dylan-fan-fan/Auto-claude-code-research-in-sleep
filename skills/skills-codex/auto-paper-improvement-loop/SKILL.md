@@ -244,13 +244,20 @@ spawn_agent:
        - Does every reader-facing technical abbreviation appear only after its full term, including CLI, API, GPU, and LLM?
        - Audit the Abstract and main text as separate first-use scopes, then check captions for standalone readability.
        - Flag any abbreviation used before definition as MAJOR; remove one-off abbreviations unless they materially improve clarity.
-    10. **Visual Review** (from the PDF):
+    10. **Audit and Case-Study Evidence Review** (when applicable):
+       - Is the object under study identified and cited, or explicitly labeled unpublished/internal/reconstructed?
+       - Can a reviewer reach every claimed artifact from the actual submission package and run the stated entry command?
+       - Is a single case framed no more broadly than a case study or unvalidated recommendation?
+       - Do title, abstract, introduction, results, and conclusion preserve one claim boundary?
+       - Are present, called, executed, and result-backed code components distinguished?
+       - Treat any failure as MAJOR; an unsupported framework or execution claim blocks submission readiness.
+    11. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    11. **Verdict**: Ready for submission? Yes / Almost / No
+    12. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
     title clarity and length, self-containedness, notation consistency, AND visual presentation quality.
@@ -412,13 +419,20 @@ spawn_agent:
        - Does every reader-facing technical abbreviation appear only after its full term, including CLI, API, GPU, and LLM?
        - Audit the Abstract and main text as separate first-use scopes, then check captions for standalone readability.
        - Flag any abbreviation used before definition as MAJOR; remove one-off abbreviations unless they materially improve clarity.
-    10. **Visual Review** (from the PDF):
+    10. **Audit and Case-Study Evidence Review** (when applicable):
+       - Is the object under study identified and cited, or explicitly labeled unpublished/internal/reconstructed?
+       - Can a reviewer reach every claimed artifact from the actual submission package and run the stated entry command?
+       - Is a single case framed no more broadly than a case study or unvalidated recommendation?
+       - Do title, abstract, introduction, results, and conclusion preserve one claim boundary?
+       - Are present, called, executed, and result-backed code components distinguished?
+       - Treat any failure as MAJOR; an unsupported framework or execution claim blocks submission readiness.
+    11. **Visual Review** (from the PDF):
        - Figure quality: readable? labels legible? colors distinguishable in grayscale?
        - Figure-caption alignment: does each caption match its figure?
        - Layout: orphaned headers, awkward page breaks, figures far from references?
        - Table formatting: aligned columns, consistent decimals, bold for best results?
        - Visual consistency: same color scheme across all figures?
-    11. **Verdict**: Ready for submission? Yes / Almost / No
+    12. **Verdict**: Ready for submission? Yes / Almost / No
 
     Focus on: theoretical rigor, claims vs evidence alignment, writing clarity,
     title clarity and length, self-containedness, notation consistency, and visual presentation quality.
@@ -480,6 +494,8 @@ After the final recompilation, run a **location-aware** format compliance check.
 **Introduction gate (blocking for a submission-ready verdict):** read only the first two Introduction paragraphs. They must expose the research question, why it matters, and the primary finding in plain language. Rewrite any avoidable sentence over about 35 words, clause-heavy construction, filler sentence, or novelty-seeking term used in place of standard vocabulary. Do not mark the paper ready until an adjacent-domain reader can paraphrase the opening after one pass.
 
 **First-use definition gate (blocking for a submission-ready verdict):** read the Abstract and main text as separate scopes, in order, and inspect figure and table captions. Every reader-facing technical abbreviation must be preceded by its full term at first use, even for familiar-looking terms such as CLI, API, GPU, and LLM. Define caption abbreviations needed for standalone interpretation, and remove one-off abbreviations unless they materially improve clarity. Do not mark the paper ready while a reader must guess an abbreviation.
+
+**Audit/case-study evidence gate (blocking when applicable):** identify the object under study, its citation or explicit unpublished/internal/reconstructed status, and the exact reviewer-visible artifact route. Run the packaged entry command from a clean directory. A single case cannot support a validated framework claim without independent validation. Compare the canonical qualified claim across title, Abstract, Introduction, results, and Conclusion. Treat code presence, call-path reachability, historical execution, and preserved results as separate evidence levels. Evidence-requiring failures cannot be repaired by adding hedges; narrow the claim or report the paper blocked.
 
 ```bash
 # If the log lacks file/line data, rerun the final compile once with -file-line-error.
@@ -630,6 +646,7 @@ paper/
 - **Title is a submission gate** — choose the shortest accurate title that passes the program-list test; move nonessential mechanism and evaluation detail into the abstract
 - **Plain Introduction is a submission gate** — state the question, importance, and primary finding upfront; split long sentences, delete filler, and use standard vocabulary
 - **First-use definitions are a submission gate** — expand technical abbreviations before use in the Abstract and again in the main text; make captions self-contained
+- **Audit evidence is a submission gate when applicable** — identify and cite the target, test reviewer-visible artifacts, bound single-case generality, align claim strength, and never equate code presence with execution
 - **Global consistency** — when renaming notation or changing a claim's scope, keep every restatement semantically consistent across ALL files (abstract, intro, method, experiments, theory sections, conclusion, tables, figure captions); consistency means matching scope, not copying disclaimer sentences everywhere
 - **Edit-whitelist rejections are LOGGED, not silently dropped** — when `EDIT_WHITELIST` is set and an edit is rejected for a path or forbidden-operation violation, the rejection MUST be appended to `PAPER_IMPROVEMENT_LOG.md` with file, reason, offending pattern, and the original reviewer concern. The loop reports a rejection summary at the end of every round (and in the checkpoint, if `HUMAN_CHECKPOINT = true`). Never silently swallow a whitelist rejection — the audit trail is the whole point of the parameter.
 

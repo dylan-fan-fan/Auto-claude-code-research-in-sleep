@@ -220,10 +220,13 @@ For each section, specify:
 - **Estimated length**: 150-250 words
 - **Self-contained check**: can a reader understand this without the paper?
 - **Abbreviation plan**: [full term (ABBR) for every technical abbreviation at first use]
+- **Evidence boundary**: [strongest claim the surviving or collected evidence actually supports]
 
 ### §1 Introduction
 - **First-two-paragraph contract**: [research question] → [why it matters] → [primary finding], stated in plain, direct language
 - **First-use terminology plan**: [full term (ABBR) mappings; redefine here even if the Abstract defined them]
+- **Audit target, if applicable**: [published/public/internal/reconstructed; citation or explicit uncitable-status statement]
+- **Artifact path, if applicable**: [reviewer-visible upload/link, exact entry file, and run command]
 - **Opening hook**: [1-2 sentences that motivate the problem]
 - **Gap / challenge**: [what's missing in prior work, and why prior work is insufficient]
 - **One-sentence contribution**: [the main takeaway of the paper]
@@ -330,6 +333,11 @@ mcp__codex__codex:
     If the title fails, propose 3 shorter accurate alternatives and identify the shortest one that preserves necessary scope.
     If the introduction fails, identify the minimum rewrite and flag long, clause-heavy, filler, or novelty-seeking terminology.
     If first-use accessibility fails, list each abbreviation and where its full term must appear.
+    For an audit, reproduction, correction, or case-study paper, also verify that:
+    - the object under study is identified and cited or explicitly labeled unpublished/internal/reconstructed;
+    - every claimed artifact is reviewer-visible through the actual submission package;
+    - a single case is not framed as a validated general framework;
+    - title, abstract, introduction, results, and conclusion use the same evidence-bounded claim.
 
     For each weakness, suggest the MINIMUM fix.
     Be specific and actionable — "add X" not "consider more experiments".
@@ -385,6 +393,10 @@ Save the final outline to `PAPER_PLAN.md` in the project root:
 - **Title must pass alone** — compare at least three candidates and choose the shortest accurate title that an adjacent-domain reader can paraphrase after one reading
 - **Plan a plain-language opening** — the first two paragraphs must expose the research question, importance, and primary finding; do not budget space for throat-clearing or academic filler
 - **Plan first-use definitions** — expand technical abbreviations in the Abstract and again in the main text; make captions independently readable
+- **Audit papers identify their object** — the first page must cite a public target or plainly identify an unpublished/internal/reconstructed target and its evidence boundary
+- **One case is not a validated framework** — plan independent validation or narrow the contribution to a case study, checklist, or unvalidated reporting aid
+- **Artifacts must be reviewer-visible** — plan an exact paper-to-supplement pointer and verify the actual submission package, not only the local tree
+- **Claim strength must agree** — use one evidence-bounded claim across title, Abstract, Introduction, results, and Conclusion
 - **Front-load the story** — the outline should make the contribution clear in the title, abstract, introduction, and hero figure before the reader reaches the full method
 - **Figures need detailed descriptions** — especially the hero figure, which must clearly specify comparisons and visual expectations
 - **Section count is flexible** — 5-8 sections depending on paper type. Don't force content into a rigid 5-section template.

@@ -160,6 +160,8 @@ Before drafting the front matter, re-read the one-sentence contribution from `PA
 **§1 Introduction:**
 - In the first one or two paragraphs, state the research question, why it matters, and the primary finding in plain, direct language
 - At each technical abbreviation's first main-text occurrence, write the full term followed by the abbreviation in parentheses, even if the Abstract already defined it
+- For an audit, reproduction, or correction paper, identify the object under study on the first page. Cite a public target; otherwise state plainly that it is unpublished, internal, or reconstructed and name the inspectable evidence that defines it
+- If artifacts support the contribution, point to the exact reviewer-visible supplement path or anonymous link and give the entry command; local existence alone is not availability
 - Use familiar, field-standard terms; do not rename ordinary “analysis” or “investigation” with novelty-seeking vocabulary such as “postmortem” unless the term is established and necessary
 - Give each sentence one job. Aim for about 25 English words or fewer; split sentences longer than about 35 words unless technical precision requires them
 - Delete any sentence that does not advance the problem, importance, gap, approach, finding, contribution, or scope; never write to fill space
@@ -350,6 +352,13 @@ spawn_agent:
     9. From the first two introduction paragraphs alone, can the reader state the research question, why it matters, and the primary finding? Flag long or clause-heavy sentences, filler, and non-standard vocabulary used where a common term would be clearer.
     10. Is every technical abbreviation expanded before first use in the Abstract and again in the main text? Check captions independently and treat undefined abbreviations as MAJOR.
 
+    For any audit, reproduction, correction, or case-study paper, additionally treat these as MAJOR:
+    - the object under study is neither cited nor explicitly identified as unpublished/internal/reconstructed;
+    - an artifact claim lacks a reviewer-visible path and tested entry command;
+    - a single case is presented as a validated framework without independent validation;
+    - the title is stronger than the canonical qualified claim;
+    - code presence is described as execution without call-path and preserved-result evidence.
+
     For each issue, specify: severity (CRITICAL/MAJOR/MINOR), location, and fix.
 
     [paste full draft text]
@@ -381,6 +390,11 @@ Before declaring done:
 - [ ] Abstract is self-contained (understandable without reading the paper)
 - [ ] Every technical abbreviation is expanded before first use in the Abstract and again in the main text
 - [ ] Captions define abbreviations needed for standalone interpretation; one-off abbreviations were removed
+- [ ] Title, Abstract, Introduction, results, and Conclusion preserve one canonical claim strength and scope
+- [ ] Any audit target is identified and cited, or explicitly labeled unpublished/internal/reconstructed
+- [ ] Artifact availability was verified from the reviewer-facing submission package, with exact paths and entry commands stated in the paper
+- [ ] A one-case paper is framed as a case study unless independent validation supports a method or framework claim
+- [ ] Material code is distinguished as present, called, executed, and result-backed
 - [ ] Title passes the title-alone program-list test and is the shortest accurate choice among at least three candidates
 - [ ] Any title longer than about 16 English words or using multiple subtitle clauses has a concrete accuracy or scope justification
 - [ ] The first two Introduction paragraphs directly state the research question, why it matters, and the primary finding
@@ -472,6 +486,8 @@ Before declaring done:
 - **Launch, not progress report** — organize around the strongest genuine advantage, pick the contest the paper wins, give every experiment an argumentative duty; unfavorable numbers stay in the tables, explained as tradeoffs where the evidence supports that and stated neutrally where it does not — never narrated as defeats, never dressed as a tradeoff they are not (rules 9-12 above)
 - **Venue style matters** — ML conferences (ICLR/NeurIPS/ICML) use `natbib` (`\citep`/`\citet`); **IEEE venues use `cite` package (`\cite{}`, numeric)**. Never mix.
 - **First-use definitions are mandatory** — define every reader-facing technical abbreviation before use; audit the Abstract, main text, and captions separately
+- **Evidence-bounded framing is mandatory** — the title may be shorter than the body claim but never stronger; necessary qualifiers belong near one canonical claim, not scattered as evasive hedging
+- **Code presence is not execution evidence** — distinguish present, called, executed, and result-backed components
 - **Page limit rules differ by venue** — ML conferences: main body to Conclusion, references/appendix NOT counted. **IEEE: references ARE counted toward the page limit.**
 - **Clean bib** — references.bib must only contain entries that are actually `\cite`d
 - **Section count is flexible** — match PAPER_PLAN structure, don't force into 5 sections

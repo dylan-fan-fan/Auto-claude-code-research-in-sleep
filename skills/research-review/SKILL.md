@@ -100,6 +100,16 @@ mcp__codex__codex:
        captions independently. Treat undefined abbreviations, including
        familiar-looking terms such as CLI, API, GPU, and LLM, as major
        accessibility defects.
+    8. For an audit, reproduction, correction, or case-study paper:
+       - identify the object under study and verify its citation or explicit
+         unpublished/internal/reconstructed status;
+       - verify that claimed artifacts are reviewer-visible and runnable from
+         the submitted package, not merely present locally;
+       - reject a validated-framework claim supported only by one case;
+       - compare claim strength across title, abstract, introduction, results,
+         and conclusion;
+       - distinguish code present, called, executed, and backed by preserved
+         results.
 
     === SCOPE LIMITS (these bound what you PROPOSE, never what you look for) ===
     Report anything that is actually wrong here — including a rare-looking case, if
@@ -208,6 +218,7 @@ Update project memory/notes with key review conclusions.
 - For paper reviews, assess the title without the abstract; do not declare the narrative settled until the title passes the program-list test
 - For paper reviews, assess the first two Introduction paragraphs in isolation; do not declare the narrative settled until the question, importance, and primary finding are immediately recoverable in plain language
 - For paper reviews, do not declare the writing accessible until technical abbreviations are defined before use in the Abstract and again in the main text, with self-contained captions
+- For audit and case-study papers, do not declare the narrative settled while the target is ambiguous, artifacts are not reviewer-visible, one case carries an unvalidated framework claim, claim strength drifts, or implementation presence is confused with execution evidence
 - Document the threadId for potential future resumption
 - The review document should be self-contained (readable without the conversation)
 

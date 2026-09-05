@@ -99,11 +99,15 @@ spawn_agent:
     4. Is the experiment tracker status DONE (not TODO/IN_PROGRESS)?
     FAIL if: Claimed results reference nonexistent files or mismatched numbers.
 
-    ### D. Dead Code Detection
-    For each metric function defined in eval scripts:
-    1. Is it actually CALLED in any evaluation pipeline?
-    2. Does its output appear in any result file?
-    WARN if: Metric functions exist but are never called.
+    ### D. Execution-Status and Dead-Code Detection
+    For every component material to a paper claim, record four separate states:
+    1. present: implementation exists in the audited archive;
+    2. called: the evaluated pipeline imports and reaches it;
+    3. executed: logs, traces, or immutable run metadata show it ran;
+    4. result_backed: its output survives in a claim-linked result file.
+    Never infer a later state from an earlier one. WARN for irrelevant dead code.
+    FAIL if a paper or result claim treats present/called code as executed or
+    result-backed, or if a claimed metric has no executed call path.
 
     ### E. Scope Assessment
     1. How many scenes/datasets/configurations were actually tested?
@@ -158,8 +162,8 @@ Parse the reviewer's response and write `EXPERIMENT_AUDIT.md`:
 ### C. Result File Existence: [PASS|WARN|FAIL]
 [details]
 
-### D. Dead Code Detection: [PASS|WARN|FAIL]
-[details]
+### D. Execution Status and Dead Code: [PASS|WARN|FAIL]
+[per-component present / called / executed / result_backed ledger]
 
 ### E. Scope Assessment: [PASS|WARN|FAIL]
 [details]
@@ -276,6 +280,7 @@ if EXPERIMENT_AUDIT.json exists AND integrity_status == "fail":
 - **File-as-switch**: no EXPERIMENT_AUDIT.md = skill was never run = zero impact on existing behavior.
 - **Review class**: base Codex is same-family provisional; only an overlay may claim cross-family accepted.
 - **Honest about limits**: the audit catches common patterns, not all possible fraud. It is a safety net, not a guarantee.
+- **Implementation is not execution**: preserve the four-state ledger; claim-relevant execution gaps are FAIL, while unrelated dead code is WARN.
 
 ## Acknowledgements
 

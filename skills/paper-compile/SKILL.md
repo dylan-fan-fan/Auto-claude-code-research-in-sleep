@@ -225,6 +225,8 @@ For conference submission, additional checks:
 - [ ] **No supplementary mixed in**: appendix clearly after `\newpage\appendix`
 - [ ] **File size**: reasonable (< 50MB for most venues, < 10MB preferred)
 - [ ] **No `[VERIFY]` markers**: search the PDF text for leftover markers
+- [ ] **Reviewer-visible artifacts**: for every artifact claim, inspect the actual submission package or portal-visible file list, confirm the named files are included or anonymously linked, and run the stated entry command from a clean directory
+- [ ] **Paper-to-artifact navigation**: the PDF names the exact supplement path or anonymous link and the minimal entry command; a local repository alone does not satisfy this check
 
 ### Step 8: Output Summary
 
@@ -254,6 +256,7 @@ For conference submission, additional checks:
 - **If LaTeX is not installed**, provide clear installation instructions rather than failing silently
 - **Font embedding is critical** — some venues reject PDFs with non-embedded fonts
 - **Page count rules differ by venue** — ML conferences: main body to Conclusion (refs excluded). **IEEE venues: total pages including references.**
+- **Compile success is not artifact availability** — do not report submission-ready when claimed code/data is absent from the reviewer-facing package, undiscoverable from the PDF, or fails its clean-directory entry command.
 
 ## Common Venue Requirements
 

@@ -155,6 +155,13 @@ mcp__codex__codex:
 
     Be honest. Do not inflate claims beyond what the data supports.
     A single positive result on one dataset does not support a general claim.
+    For a case study, audit, reproduction, or correction, classify the allowed
+    contribution label as case_study | checklist | unvalidated_reporting_aid |
+    validated_method_or_framework. The last label requires direct independent
+    validation such as multiple independent cases, controlled fault injection,
+    or comparative evaluation; generality discussion alone is insufficient.
+    Return one canonical claim sentence whose certainty and scope can be reused
+    unchanged in the title, abstract, introduction, results, and conclusion.
 ```
 
 ### Step 3: Parse and Normalize
@@ -169,6 +176,9 @@ Extract structured fields from Codex response:
 - suggested_claim_revision: "..."
 - next_experiments_needed: "..."
 - confidence: high | medium | low
+- evidence_breadth: single_case | multiple_related_cases | independent_validation
+- allowed_contribution_label: case_study | checklist | unvalidated_reporting_aid | validated_method_or_framework
+- canonical_claim: "..."
 ```
 
 ### Step 3.5: Check Experiment Integrity (if audit exists)
@@ -302,6 +312,7 @@ if research-wiki/ exists:
 - **Codex is the judge, not CC.** CC collects evidence and routes; Codex evaluates. This prevents post-hoc rationalization.
 - Do not inflate claims beyond what the data supports. If Codex says "partial", do not round up to "yes".
 - A single positive result on one dataset does not support a general claim. Be honest about scope.
+- A single case does not validate a method or framework. Without independent validation, emit only `case_study`, `checklist`, or `unvalidated_reporting_aid`, and preserve the returned canonical claim boundary throughout the paper.
 - If `confidence` is low, treat the judgment as inconclusive and add experiments rather than committing to a claim.
 - **Fail closed if the reviewer is unavailable.** If the Codex call fails, first walk the capability fallback chain in `shared-references/reviewer-routing.md` (`gpt-5.6-sol`+`ultra` → `gpt-5.6-sol`+`xhigh` → `gpt-5.5`+`xhigh`, capability errors only). If no allowed pair succeeds: write `CLAIMS_FROM_RESULTS.md` containing ONLY the first line `verdict: REVIEW_UNAVAILABLE` (a machine-checkable gate for pipeline callers), record the same in findings.md, and STOP — CC never substitutes its own claim judgment (a loop can drive, never acquit; `acceptance-gate.md`). Downstream steps (wiki `add_experiment` edges, ablation-planner, paper claims) must not consume a run without a Codex verdict. Exception: the deterministic evidence pre-check (Step 1.5) may still terminally mark a claim `claim_supported: no` for hallucinated evidence — a deterministic rejection needs no reviewer; only SUPPORTIVE or ambiguous outcomes require one.
 - Always record the verdict and reasoning in findings.md, regardless of outcome.

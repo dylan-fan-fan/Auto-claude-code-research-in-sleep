@@ -15,6 +15,7 @@ This is the expanded English counterpart to the detailed Chinese version. It is 
 - [Sentence-Level Clarity](#sentence-level-clarity)
 - [Micro-Level Writing Tactics](#micro-level-writing-tactics)
 - [Word Choice and Precision](#word-choice-and-precision)
+- [Evidence-Bounded Audit and Case-Study Papers](#evidence-bounded-audit-and-case-study-papers)
 - [Mathematical Writing](#mathematical-writing)
 - [Figure Design](#figure-design)
 - [Common Mistakes](#common-mistakes)
@@ -412,6 +413,43 @@ Never make readers guess an abbreviation. At its first reader-facing use, write 
 
 An automated uppercase-token scan can find candidates, but it does not replace reading the Abstract, main text, and captions in order. The final test is whether an adjacent-domain reader encounters the definition before needing the abbreviation.
 
+## Evidence-Bounded Audit and Case-Study Papers
+
+Papers that audit, reproduce, correct, or analyze a specific prior artifact must make the object and evidence boundary obvious on the first page.
+
+### Identify the Object Under Study
+
+- State whether the target is a published paper, public artifact, unpublished internal experiment, or reconstructed project record.
+- Cite a published or public target directly. Double-blind review is not a reason to omit a scientifically necessary citation; use third-person self-citation or an allowed anonymous artifact link.
+- If the target is unpublished or cannot be cited, say so plainly and explain what inspectable material defines it. Do not write “the original work” or “one audit” as if the reader already knows what that means.
+
+### Make Artifacts Reviewer-Visible
+
+- A local repository or archive does not count as available evidence. Verify the exact reviewer-facing upload or anonymous link after submission packaging.
+- Point from the paper to the precise supplement directory, entry command, and evidence files. A reviewer should locate the relevant code or data in under a minute.
+- Test the submitted archive from a clean directory. Label missing artifacts explicitly; do not imply that a current implementation reproduces a historical execution.
+
+### Match Generality to Evidence
+
+- One case supports a case-study conclusion, not a validated general framework.
+- Claim a reusable method or framework only when independent cases, controlled fault injection, comparative evaluation, or another direct validation tests its general operation.
+- Without that validation, call the contribution a checklist, reporting aid, hypothesis, or recommendation and state that it remains unvalidated.
+
+### Keep Claim Strength Consistent
+
+Write one canonical main-claim sentence with its necessary qualifier. The title, Abstract, Introduction, results, and Conclusion must preserve the same certainty and scope. The title may be clearer and shorter, but never stronger. Use necessary qualifiers once near the claim; do not scatter stacked hedges that make the claim impossible to recover.
+
+### Separate Code Presence from Execution Evidence
+
+For every implementation component material to a claim, distinguish:
+
+1. present in the archive,
+2. reachable or called by the evaluated pipeline,
+3. executed in the reported run,
+4. backed by a preserved result.
+
+Never infer a later level from an earlier one. Explain why material uncalled or stub code is included, or omit it from the reviewer-facing artifact if it is irrelevant.
+
 ### Vocabulary Signaling
 
 Some verbs make the work sound like a loose combination of existing pieces:
@@ -527,6 +565,11 @@ Do:
 | Bloated or jargon-heavy title | Rewrite for one-pass program-list comprehension; move secondary details to the abstract |
 | Introduction hides the research question or finding | State the question, importance, and primary finding in the first one or two paragraphs |
 | Technical abbreviation used before definition | Write the full term first, followed by the abbreviation in parentheses; repeat this for its first use in both the Abstract and main text |
+| Audit target is unnamed or uncited | Identify whether it is published, public, internal, or reconstructed; cite it or explain the evidence that defines it |
+| Single case presented as a validated framework | Add independent validation or narrow the contribution to a case study or unvalidated reporting aid |
+| Artifact exists locally but reviewers cannot locate it | Verify the reviewer-facing upload and point to exact files and commands in the paper |
+| Title is stronger than the qualified body claim | Use one canonical claim boundary across title, Abstract, Introduction, and Conclusion |
+| Implemented code described as executed evidence | Record present, called, executed, and result-backed status separately |
 | Long, clause-heavy sentence | Split it into direct sentences with one job each |
 | Novel-sounding name for a familiar activity | Use the field-standard term unless the new term adds necessary meaning |
 | Filler written only to sound academic | Delete it; do not write to fill space |
@@ -567,6 +610,14 @@ Do:
 - [ ] The Introduction makes the What / Why / So What clear.
 - [ ] The first two Introduction paragraphs state the research question, why it matters, and the primary finding.
 - [ ] Every major experiment supports a clear claim.
+- [ ] The title, Abstract, Introduction, results, and Conclusion preserve the same claim strength and scope.
+
+### Audit and Case-Study Papers
+
+- [ ] The first page identifies the audited object and either cites it or plainly explains why it is unpublished or uncitable.
+- [ ] The paper points to reviewer-visible artifact files and an entry command, verified from the actual submission package.
+- [ ] A single case is labeled as a case study unless independent evidence validates a broader method or framework.
+- [ ] Material components are labeled separately as present, called, executed, and result-backed.
 
 ### Structure
 

@@ -144,6 +144,18 @@ spawn_agent:
        but only tested on 2 datasets
        Rule: check if language matches actual evaluation scope
 
+    8. **Cross-section claim drift**: title states a causal or general claim
+       while abstract, results, or limitations qualify it as suspected,
+       conditional, single-case, or unvalidated
+       Rule: extract the strongest claim from title, abstract, introduction,
+       results, and conclusion; the least-supported version sets the ceiling
+
+    9. **Implementation/execution conflation**: paper treats code presence or
+       call-path reachability as evidence that a component ran or produced a
+       reported result
+       Rule: require separate evidence for present, called, executed, and
+       result-backed status
+
     ## Output Format (per claim)
     For each claim, report:
     - claim_id: sequential number

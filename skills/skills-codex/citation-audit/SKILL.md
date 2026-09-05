@@ -78,6 +78,14 @@ If the user passed `--uncited`, also compute the set difference `bib_keys \ cite
 
 Save the extracted contexts to `paper/.aris/citation-audit/contexts.txt` so the reviewer can read it directly. Use the paper-dir-relative path `.aris/citation-audit/contexts.txt` when recording the file in `audited_input_hashes`; do not stage under `/tmp` or other transient locations that the verifier cannot rehash later.
 
+### Step 2.5: Audit-target identity pre-check
+
+If the manuscript audits, reproduces, corrects, or analyzes a specific prior work or artifact, identify that object from the title, Abstract, and Introduction.
+
+- A published or public target must have a direct citation. Double-blind review does not justify omitting a scientifically necessary citation; third-person self-citation or an allowed anonymous artifact link preserves anonymity.
+- An unpublished, internal, or reconstructed target must be labeled as such on the first page and tied to inspectable evidence.
+- If neither condition holds, record `details.audit_target_identity` with exact locations. Use FAIL when a public target is identifiable but uncited, and WARN when the target itself is too ambiguous to classify. A bibliography can be individually correct while the paper still fails this gate.
+
 ### Step 3: Send each entry to a fresh reviewer (same-family provisional by default)
 
 For each **cited** bib entry — i.e., each key in `cited_keys` with at least one extracted citation context — launch a fresh Codex reviewer agent. Do not reuse the same reviewer across entries. Do **not** spawn an agent for entries in `bib_keys \ cited_keys`; those are detect-only and surface only when `--uncited` is explicitly enabled (see "Uncited Entry Detection" below).
@@ -277,6 +285,7 @@ If the bib file cannot be read well enough to audit even the cited entries, fall
 - **Fresh reviewer thread per audit run** — never reuse prior review context
 - **Web access required** — the reviewer must do real lookups, not memory pattern-match
 - **Wrong-context > metadata** — a real paper used to support a wrong claim is more dangerous than a typo in author name
+- **The object under audit needs provenance** — cite a public target or explicitly identify an unpublished/internal/reconstructed target; do not let entry-by-entry verification miss the paper's central absent citation
 - **REPLACE/REMOVE require human approval** — never auto-modify content claims
 - **Always emit, never block** — this skill always writes `CITATION_AUDIT.json` with a verdict; the decision to block finalization lives in `paper-writing` Phase 6 + `verify_paper_audits.sh`, driven by the `assurance` level. See "Submission Artifact Emission" below.
 - **Run once per submission** — the audit is wall-clock expensive (web lookups for each entry); not for every save
